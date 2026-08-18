@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>PhageMind — 潘存丽专属噬菌体与生命科学学术英语掌控库</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0f172a;
+      --bg-card: #1e293b;
+      --bg-card-hover: #283548;
+      --border-color: #334155;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent-primary: #38bdf8;
+      --accent-hover: #0284c7;
+      --accent-purple: #a855f7;
+      --accent-green: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --tag-bg: rgba(56, 189, 248, 0.12);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 16px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      font-size: 32px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-title h1 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(to right, #f8fafc, #cbd5e1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-title p {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .btn-primary {
+      background: var(--accent-primary);
+      color: #0f172a;
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      color: #ffffff;
+    }
+
+    .btn-outline {
+      background: rgba(30, 41, 59, 0.8);
+      color: var(--text-primary);
+      border-color: var(--border-color);
+    }
+    .btn-outline:hover {
+      background: var(--border-color);
+    }
+
+    .btn-success {
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399;
+      border-color: rgba(16, 185, 129, 0.4);
+    }
+    .btn-success:hover {
+      background: var(--accent-green);
+      color: #0f172a;
+    }
+
+    .btn-danger {
+      background: rgba(244, 63, 94, 0.2);
+      color: #fb7185;
+      border-color: rgba(244, 63, 94, 0.4);
+    }
+    .btn-danger:hover {
+      background: var(--accent-rose);
+      color: #ffffff;
+    }
+
+    /* Controls Panel */
+    .controls-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .search-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .search-input-wrapper {
+      flex: 1;
+      min-width: 260px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 9px 14px 9px 38px;
+      color: var(--text-primary);
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--accent-primary);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    /* Category Chips / Tags */
+    .filter-section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .filter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .category-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chip {
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: 500;
+      border-radius: 16px;
+      background: #0f172a;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .chip:hover {
+      border-color: var(--accent-primary);
+      color: var(--text-primary);
+    }
+
+    .chip.active {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(168, 85, 247, 0.2));
+      color: var(--accent-primary);
+      border-color: var(--accent-primary);
+      font-weight: 600;
+    }
+
+    /* View Bar */
+    .view-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    /* Card Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 14px;
+    }
+
+    .word-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 16px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .word-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent-primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+
+    .word-header {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .word-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .phonetic {
+      font-family: 'Fira Code', monospace;
+      font-size: 12px;
+      color: var(--accent-primary);
+      background: rgba(56, 189, 248, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* Full Name Box */
+    .fullname-box {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 6px;
+      padding: 6px 10px;
+      margin: 6px 0 8px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .fullname-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: #38bdf8;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.3;
+    }
+
+    .audio-btn {
+      background: transparent;
+      border: none;
+      color: var(--accent-primary);
+      cursor: pointer;
+      font-size: 15px;
+      padding: 4px 6px;
+      border-radius: 4px;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .audio-btn:hover {
+      background: rgba(56, 189, 248, 0.15);
+      transform: scale(1.15);
+    }
+
+    .star-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 18px;
+      transition: color 0.2s;
+    }
+    .star-btn.active, .star-btn:hover {
+      color: #fbbf24;
+    }
+
+    .pos-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 12px;
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      margin-bottom: 8px;
+      align-self: flex-start;
+    }
+
+    .definition {
+      font-size: 13px;
+      color: #e2e8f0;
+      margin-bottom: 10px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .category-tag {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: auto;
+    }
+
+    /* Expandable Examples Area */
+    .examples-container {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border-color);
+      display: none;
+      animation: fadeIn 0.2s ease-in-out;
+    }
+
+    .examples-container.show {
+      display: block;
+    }
+
+    .example-item {
+      background: #0f172a;
+      border-left: 3px solid var(--accent-purple);
+      padding: 8px 10px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 6px;
+      font-size: 12px;
+    }
+
+    .example-en {
+      color: #f1f5f9;
+      margin-bottom: 3px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .example-cn {
+      color: var(--text-secondary);
+      font-size: 11px;
+    }
+
+    .example-source {
+      font-size: 10px;
+      color: var(--accent-primary);
+      margin-top: 3px;
+      display: block;
+      font-weight: 500;
+    }
+
+    .expand-hint {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 6px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Flashcard Mode Enhanced (Shanbay / Baicizhan Persistent Spaced Repetition) */
+    .flashcard-mode-wrapper {
+      display: none;
+      text-align: center;
+      padding: 10px 4px;
+    }
+    .flashcard-mode-wrapper.active {
+      display: block;
+    }
+
+    .fc-header-bar {
+      max-width: 640px;
+      margin: 0 auto 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text-secondary);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .fc-stats-pill {
+      display: flex;
+      gap: 12px;
+      background: var(--bg-card);
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    .big-card {
+      max-width: 640px;
+      min-height: 380px;
+      margin: 0 auto 16px;
+      background: var(--bg-card);
+      border: 2px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-lg);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .big-card:hover {
+      border-color: var(--accent-primary);
+    }
+
+    .fc-actions-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      max-width: 640px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+
+    /* Hidden / Collapsible Settings Section (Prevents Accidental Resets) */
+    .danger-zone-details {
+      max-width: 640px;
+      margin: 32px auto 10px;
+      border-top: 1px solid #334155;
+      padding-top: 16px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+    .danger-zone-details summary {
+      cursor: pointer;
+      user-select: none;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    /* Modal for Adding New Word */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      width: 92%;
+      max-width: 540px;
+      padding: 20px;
+      box-shadow: var(--shadow-lg);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .modal-header h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .close-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+    .form-control {
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 8px 10px;
+      color: var(--text-primary);
+      font-size: 13px;
+      outline: none;
+    }
+    .form-control:focus {
+      border-color: var(--accent-primary);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      body {
+        padding: 10px;
+      }
+      .big-card {
+        padding: 16px;
+        min-height: 320px;
+      }
+      .fc-actions-row .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <div class="brand-icon">🧬</div>
+        <div class="brand-title">
+          <h1>PhageMind — 噬菌体与生命科学英语掌握库</h1>
+          <p>潘存丽专属学术词库 · Nature/Science 顶刊句库 · 缩写全称发音 · 智能艾宾浩斯抽认卡</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-outline" id="shareToPhoneBtn" title="一键调出隔空投送或保存到手机">📲 发送到手机</button>
+        <button class="btn btn-outline" id="toggleFlashcardBtn">🎴 智能抽认卡复习</button>
+        <button class="btn btn-primary" id="openAddModalBtn">➕ 添加新生词</button>
+      </div>
+    </header>
+
+    <!-- Regular View Panel -->
+    <div id="regularView">
+      <!-- Search & Filters -->
+      <div class="controls-panel">
+        <div class="search-row">
+          <div class="search-input-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" class="search-input" placeholder="输入英文单词/缩写、全称、中文释义或基因检索 (如: AMG, ELISA, NAD, confer)...">
+          </div>
+          <button class="btn btn-outline" id="clearFiltersBtn">🔄 重置筛选</button>
+        </div>
+
+        <div class="filter-section">
+          <div class="filter-header">
+            <span>🏷️ 专业板块与学术功能分类 (点击多选/并集过滤)</span>
+            <span id="activeFilterCount">显示全部板块</span>
+          </div>
+          <div class="category-chips" id="categoryChips">
+            <!-- Chips injected dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <!-- View Bar -->
+      <div class="view-bar">
+        <div id="statsText">正在加载词汇库...</div>
+        <div>💡 提示：点击 🔊 按钮可分别播放<b>缩写发音</b>与<b>完整全称朗读</b>；点击卡片展开文献真实例句。</div>
+      </div>
+
+      <!-- Word Cards Grid -->
+      <div class="cards-grid" id="cardsGrid">
+        <!-- Cards injected dynamically -->
+      </div>
+    </div>
+
+    <!-- Enhanced Flashcard Mode View (Shanbay/Anki Persistent Spaced Repetition) -->
+    <div class="flashcard-mode-wrapper" id="flashcardView">
+      <div class="fc-header-bar">
+        <div class="fc-stats-pill">
+          <span style="color: #34d399;" id="fcMasteredCount">🟢 已斩获: 0</span>
+          <span style="color: #fb7185;" id="fcReviewCount">🔴 今日待攻克: 0</span>
+        </div>
+        <button class="btn btn-outline btn-sm" id="exitFlashcardBtn">✕ 退出抽认卡</button>
+      </div>
+
+      <div class="big-card" id="flashcardCard">
+        <!-- Front -->
+        <div id="flashcardFront">
+          <div class="pos-badge" id="fcPosFront" style="margin-bottom: 12px;">专业术语</div>
+          
+          <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 8px;">
+            <span style="font-size: 32px; font-weight: 700; color: #ffffff;" id="fcWord">AMG</span>
+            <button class="audio-btn" id="fcSpeakWordFrontBtn" title="播放缩写/单词发音">🔊</button>
+          </div>
+
+          <div class="phonetic" style="font-size: 15px; margin-bottom: 12px;" id="fcPhonetic">/ˌeɪ.ɛmˈdʒiː/</div>
+          
+          <div id="fcFullNameBoxFront" class="fullname-box" style="display: none; max-width: 480px; margin: 12px auto;">
+            <span class="fullname-text" id="fcFullNameFront">Auxiliary Metabolic Gene</span>
+            <button class="audio-btn" id="fcSpeakFullNameBtnFront" title="朗读英文全称">🔊</button>
+          </div>
+
+          <div style="margin-top: 28px; color: var(--text-muted); font-size: 13px;">
+            👆 <b>点击卡片任意处翻转</b> 查看中文解析、机制背景与真实顶刊例句
+          </div>
+        </div>
+
+        <!-- Back -->
+        <div id="flashcardBack" style="display: none; width: 100%; text-align: left;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 24px; font-weight: 700; color: #38bdf8;" id="fcWordBack">AMG</span>
+              <button class="audio-btn" id="fcSpeakWordBackBtn" title="播放缩写/单词发音">🔊</button>
+            </div>
+            <div class="pos-badge" id="fcPosBack">功能基因</div>
+          </div>
+
+          <div id="fcFullNameBoxBack" class="fullname-box" style="display: none; margin-bottom: 12px;">
+            <span class="fullname-text" id="fcFullNameBack">Auxiliary Metabolic Gene</span>
+            <button class="audio-btn" id="fcSpeakFullNameBtnBack" title="朗读英文全称">🔊</button>
+          </div>
+
+          <div style="font-size: 15px; font-weight: 600; color: #f8fafc; margin-bottom: 14px; line-height: 1.5;" id="fcDef">
+            辅助代谢基因。噬菌体从宿主基因组中捕获并保留的代谢酶基因...
+          </div>
+
+          <div class="example-item" id="fcExBox">
+            <div class="example-en" id="fcExEn">AMGs maintain critical metabolic fluxes during infection.</div>
+            <div class="example-cn" id="fcExCn">在宿主自身基因组被降解后，AMG 维持了侵染期间关键的代谢通量。</div>
+            <span class="example-source" id="fcExSource">📌 来源: Nature Reviews Microbiology</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="fc-actions-row">
+        <button class="btn btn-danger" id="fcMarkHardBtn">❌ 不认识/模糊 (稍后反复出现)</button>
+        <button class="btn btn-success" id="fcMarkEasyBtn">✅ 记住了/认识 (永久斩获并移出)</button>
+        <button class="btn btn-outline" id="fcNextBtn">下一个 ➡</button>
+      </div>
+
+      <!-- Hidden Danger Zone to Prevent Accidental Resets -->
+      <div class="danger-zone-details">
+        <details>
+          <summary>⚙️ 高级管理与重置设置 (折叠保护)</summary>
+          <div style="padding: 12px; background: rgba(15, 23, 42, 0.8); border-radius: 8px; margin-top: 8px; border: 1px dashed var(--border-color);">
+            <p style="margin-bottom: 8px;">注意：重置后所有已斩获词汇将重新变为待攻克状态。</p>
+            <button class="btn btn-danger btn-sm" style="font-size: 11px; padding: 4px 12px;" id="fcResetProgressBtn">⚠️ 确认重置全部记忆进度</button>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Word Modal -->
+  <div class="modal-overlay" id="addModalOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>➕ 添加自定义学术生词</h3>
+        <button class="close-btn" id="closeAddModalBtn">&times;</button>
+      </div>
+      <form id="addWordForm">
+        <div class="form-group">
+          <label>英文单词 / 缩写 (Word/Abbreviation)*</label>
+          <input type="text" class="form-control" id="newWord" required placeholder="如: AMG, tailocins, RBP">
+        </div>
+        <div class="form-group">
+          <label>完整英文全称 (Full Name, 如无则留空)</label>
+          <input type="text" class="form-control" id="newFullName" placeholder="如: Auxiliary Metabolic Gene">
+        </div>
+        <div class="form-group">
+          <label>国际音标 (Phonetic)</label>
+          <input type="text" class="form-control" id="newPhonetic" placeholder="如: /ˌeɪ.ɛmˈdʒiː/">
+        </div>
+        <div class="form-group">
+          <label>词性 / 属性 (Part of Speech)</label>
+          <input type="text" class="form-control" id="newPos" placeholder="如: 核心基因 / 实验技术 / 动词 v.">
+        </div>
+        <div class="form-group">
+          <label>中文释义与生物学语境 (Definition)*</label>
+          <input type="text" class="form-control" id="newDef" required placeholder="如: 辅助代谢基因，噬菌体编码的宿主代谢重编程酶">
+        </div>
+        <div class="form-group">
+          <label>分类板块 (Category)*</label>
+          <select class="form-control" id="newCat">
+            <option value="🔬 实验方法与技术">🔬 实验方法与技术</option>
+            <option value="🦠 噬菌体结构与解剖学">🦠 噬菌体结构与解剖学</option>
+            <option value="⚔️ 宿主-病毒军备竞赛">⚔️ 宿主-病毒军备竞赛</option>
+            <option value="🧬 宏病毒组与生物信息">🧬 宏病毒组与生物信息</option>
+            <option value="🧪 核心代谢与重要基因">🧪 核心代谢与重要基因</option>
+            <option value="🎯 顶级学术论文核心动词">🎯 顶级学术论文核心动词</option>
+            <option value="🔗 逻辑推演与转折连接词">🔗 逻辑推演与转折连接词</option>
+            <option value="🧫 细菌与噬菌体分类命名">🧫 细菌与噬菌体分类命名</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>英文例句 (English Example)</label>
+          <textarea class="form-control" id="newExEn" rows="2" placeholder="文献真实原句..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>中文例句翻译 (Chinese Translation)</label>
+          <textarea class="form-control" id="newExCn" rows="2" placeholder="例句翻译..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>例句来源 (Source)</label>
+          <input type="text" class="form-control" id="newSource" placeholder="如: Science 2024 / 组会记录">
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 16px;">
+          <button type="button" class="btn btn-outline" id="cancelAddBtn">取消</button>
+          <button type="submit" class="btn btn-primary">保存到本地库</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Raw Initial Data & Logic -->
+  <script>
+    const INITIAL_WORDS = [
+      // 🔬 1. 实验方法与技术 (Assays & Wet-lab Tech)
+      {
+        id: "exp_01",
+        word: "ELISA",
+        fullName: "Enzyme-Linked Immunosorbent Assay",
+        phonetic: "/ɪˈlaɪ.zə/",
+        pos: "实验技术 (n.)",
+        category: "🔬 实验方法与技术",
+        definition: "酶联免疫吸附测定。通过抗原抗体特异性结合与酶促显色反应，定量检测微量蛋白质、噬菌体衣壳或抗体效价的标准实验。",
+        examples: [
+          {
+            en: "We quantified the viral capsid protein concentration using a sandwich ELISA assay.",
+            cn: "我们使用双抗体夹心 ELISA 法定量测定了病毒衣壳蛋白的浓度。",
+            source: "Nature Microbiology 实验方法标准"
+          }
+        ]
+      },
+      {
+        id: "exp_02",
+        word: "Plaque Assay",
+        fullName: "Double-Layer Agar Plaque Assay",
+        phonetic: "/plæk əˈseɪ/",
+        pos: "效价测定 (n.)",
+        category: "🔬 实验方法与技术",
+        definition: "双层琼脂噬菌斑测定。通过计数活体噬菌体在敏感宿主菌草坪上形成的透明裂解斑（Plaque），测定活体病毒效价 (PFU/mL)。",
+        examples: [
+          {
+            en: "Serial dilutions of the lysate were subjected to a double-layer agar plaque assay to determine viable titer.",
+            cn: "对裂解液进行梯度稀释，并通过双层琼脂噬菌斑测定法测定活体噬菌体效价。",
+            source: "噬菌体经典实验规范"
+          }
+        ]
+      },
+      {
+        id: "exp_03",
+        word: "One-Step Growth Curve",
+        fullName: "One-Step Growth Experiment",
+        phonetic: "/wʌn stɛp ɡroʊθ kɜːrv/",
+        pos: "动力学分析 (n.)",
+        category: "🔬 实验方法与技术",
+        definition: "一步生长曲线。用于精确测定噬菌体吸附常数、潜伏期（Latent period）和平均爆发量（Burst size）的经典动力学方法。",
+        examples: [
+          {
+            en: "The one-step growth curve revealed a latent period of 25 min and an average burst size of 120 virions per cell.",
+            cn: "一步生长曲线显示该噬菌体的潜伏期为 25 分钟，单个宿主细胞的平均爆发量为 120 个病毒颗粒。",
+            source: "RecWaterVirome 湿实验方案"
+          }
+        ]
+      },
+      {
+        id: "exp_04",
+        word: "RB-TnSeq",
+        fullName: "Random Barcode Transposon Sequencing",
+        phonetic: "/ɑːr biː tiː ɛn siːk/",
+        pos: "高通量筛选 (n.)",
+        category: "🔬 实验方法与技术",
+        definition: "随机条形码转座子测序。利用带唯一条形码的转座子饱和突变全基因组，单次测序即可同时高通量评估数千个基因的抗性与适应度贡献。",
+        examples: [
+          {
+            en: "Using RB-TnSeq, they screened 70 resistance genes and identified the LPS O-antigen cluster as the tailocin receptor.",
+            cn: "利用 RB-TnSeq 技术，作者筛选了 70 个抗性基因，并最终锁定了脂多糖 O-抗原基因簇作为尾素的靶标受体。",
+            source: "Science 2024 (Gong Yuhang 汇报文献)"
+          }
+        ]
+      },
+      {
+        id: "exp_05",
+        word: "Cryo-EM",
+        fullName: "Cryogenic Electron Microscopy",
+        phonetic: "/ˌkraɪ.oʊ iː ˈɛm/",
+        pos: "结构生物学 (n.)",
+        category: "🔬 实验方法与技术",
+        definition: "冷冻透射电子显微镜。在近天然超低温状态下解析噬菌体完整纳米机器（衣壳、收缩尾鞘、基板触发态）高分辨率三维立体结构。",
+        examples: [
+          {
+            en: "Cryo-EM reconstructions resolved the contractile tail sheath and baseplate conformational changes during infection.",
+            cn: "冷冻电镜三维重构解析了侵染过程中噬菌体收缩性尾鞘与基板的构象变化。",
+            source: "Nature 结构生物学"
+          }
+        ]
+      },
+      {
+        id: "exp_06",
+        word: "Spot Assay",
+        fullName: "Spot Dilution / Drop Assay",
+        phonetic: "/spɒt əˈseɪ/",
+        pos: "快速定性 (n.)",
+        category: "🔬 实验方法与技术",
+        definition: "滴板实验 / 点滴实验。将微量噬菌体悬液梯度点滴在细菌平板草坪上，快速定性筛查宿主侵染谱或抑菌圈大小。",
+        examples: [
+          {
+            en: "Host range was preliminarily screened via spot assays on 40 clinical bacterial isolates.",
+            cn: "通过在 40 株临床分离细菌上进行滴板实验，初步筛查了噬菌体的宿主谱范围。",
+            source: "2026-08-17 组会记录"
+          }
+        ]
+      },
+      {
+        id: "exp_07",
+        word: "Flow Cytometry",
+        fullName: "Fluorescence-Activated Cell Sorting / Analysis",
+        phonetic: "/floʊ saɪˈtɑː.mə.tri/",
+        pos: "单细胞分析 (n.)",
+        category: "🔬 实验方法与技术",
+        definition: "流式细胞术 (FCM)。利用核酸荧光染色（如 SYBR Gold/Green）对水体微滤样中的游离病毒颗粒（VLP）进行高通量绝对定量计数与亚群分析。",
+        examples: [
+          {
+            en: "Viral-like particles (VLPs) in reclaimed water were enumerated by flow cytometry after SYBR Green staining.",
+            cn: "再生水中的病毒样颗粒经 SYBR Green 荧光染色后，通过流式细胞术进行绝对定量计数。",
+            source: "RecWaterVirome 实验质控"
+          }
+        ]
+      },
+
+      // 🦠 2. 噬菌体结构与解剖学 (Phage Anatomy & Morphology)
+      {
+        id: "anat_01",
+        word: "Capsid",
+        fullName: "Viral Capsid / Protein Shell",
+        phonetic: "/ˈkæp.sɪd/",
+        pos: "头部结构 (n.)",
+        category: "🦠 噬菌体结构与解剖学",
+        definition: "衣壳 / 头部外壳。由规则排列的衣壳蛋白单体组成的正二十面体外壳，内部高压压缩包裹并保护噬菌体基因组核酸（dsDNA）。",
+        examples: [
+          {
+            en: "The icosahedral capsid protects viral DNA against ambient environmental nucleases.",
+            cn: "正二十面体衣壳保护病毒 DNA 免受外界环境核酸酶的降解破坏。",
+            source: "噬菌体解剖学标准"
+          }
+        ]
+      },
+      {
+        id: "anat_02",
+        word: "Portal Protein",
+        fullName: "Portal Protein Complex (Connector)",
+        phonetic: "/ˈpɔːr.təl ˈproʊ.tiːn/",
+        pos: "通道蛋白 (n.)",
+        category: "🦠 噬菌体结构与解剖学",
+        definition: "门蛋白 / 入口复合体。位于衣壳特异顶角处由 12 个亚基组成的环状纳米通道，负责组装时高压泵入 DNA，并在侵染时作为核酸释放的通道守门人。",
+        examples: [
+          {
+            en: "The portal protein acts as a molecular gatekeeper connecting the viral head to the tail connector.",
+            cn: "门蛋白作为分子通道守门人，连接着病毒头部与尾部接头蛋白。",
+            source: "Cell 噬菌体组装专题"
+          }
+        ]
+      },
+      {
+        id: "anat_03",
+        word: "Tail Sheath",
+        fullName: "Contractile Tail Sheath",
+        phonetic: "/teɪl ʃiːθ/",
+        pos: "动力结构 (n.)",
+        category: "🦠 噬菌体结构与解剖学",
+        definition: "收缩性尾鞘。长肌尾噬菌体（Myoviridae）尾部外层的圆柱形螺旋弹簧机械结构，侵染时发生不可逆高能收缩，推动尾管刺透细菌细胞壁。",
+        examples: [
+          {
+            en: "Tailocin killing relies on high-energy contraction of the tail sheath to puncture the outer membrane.",
+            cn: "尾素的杀伤依赖于尾鞘的高能机械收缩，从而刺穿靶细菌的外膜。",
+            source: "Science 2024 尾素机理"
+          }
+        ]
+      },
+      {
+        id: "anat_04",
+        word: "Tail Tube",
+        fullName: "Rigid Inner Tail Tube",
+        phonetic: "/teɪl tuːb/",
+        pos: "穿刺结构 (n.)",
+        category: "🦠 噬菌体结构与解剖学",
+        definition: "尾管 / 核心刺针。位于尾鞘内部的中空中枢管道，尾鞘收缩时尾管被暴力推出刺入细胞质膜，形成跨膜纳米孔道注入 DNA。",
+        examples: [
+          {
+            en: "The rigid inner tail tube penetrates the peptidoglycan layer, forming a channel for DNA ejection.",
+            cn: "刚性内部尾管刺穿肽聚糖层，形成 DNA 喷射的纳米通道。",
+            source: "Nature Reviews Microbiology"
+          }
+        ]
+      },
+      {
+        id: "anat_05",
+        word: "Baseplate",
+        fullName: "Tail Baseplate Complex",
+        phonetic: "/ˈbeɪs.pleɪt/",
+        pos: "信号中枢 (n.)",
+        category: "🦠 噬菌体结构与解剖学",
+        definition: "基板复合体。噬菌体尾部末端的高度复杂的纳米多蛋白复合体，负责感知受体结合信号，并触发整个尾部发生星形构象重排与发射收缩。",
+        examples: [
+          {
+            en: "Receptor recognition induces a dome-to-star transition in the baseplate complex.",
+            cn: "受体识别会诱导基板复合体发生从穹顶形到星形的构象转换。",
+            source: "Nature 结构生物学"
+          }
+        ]
+      },
+      {
+        id: "anat_06",
+        word: "Tail Fiber",
+        fullName: "Tail Fiber Protein (Receptor Binding)",
+        phonetic: "/teɪl ˈfaɪ.bər/",
+        pos: "识别触手 (n.)",
+        category: "🦠 噬菌体结构与解剖学",
+        definition: "尾丝。从基板向外伸出的触手状长蛋白，尖端包含受体结合结构域 (RBP)，专门用于高亲和力特异性吸附细菌表面的糖链或外膜蛋白。",
+        examples: [
+          {
+            en: "Tail fiber variation dictates strain-level killing specificity against different O-antigen types.",
+            cn: "尾丝基因的变异决定了针对不同 O-抗原受体类型的菌株级特异性杀伤谱。",
+            source: "Science 2024 (Backman et al.)"
+          }
+        ]
+      },
+      {
+        id: "anat_07",
+        word: "TMP",
+        fullName: "Tape Measure Protein",
+        phonetic: "/tiː ɛm piː/",
+        pos: "分子标尺 (n.)",
+        category: "🦠 噬菌体结构与解剖学",
+        definition: "卷尺蛋白 (Tape Measure Protein)。长尾噬菌体尾部中轴贯穿的一根超长单分子多肽，其氨基酸链的物理长度直接精确决定了噬菌体尾巴组装时的物理长度。",
+        examples: [
+          {
+            en: "The tape measure protein acts as a molecular ruler specifying the precise length of the siphovirus tail.",
+            cn: "卷尺蛋白充当分子标尺，精确指定长尾噬菌体尾部的物理长度。",
+            source: "Trends in Microbiology"
+          }
+        ]
+      },
+
+      // ⚔️ 3. 宿主-病毒军备竞赛 (Defense & Anti-Defense)
+      {
+        id: "def_01",
+        word: "Tailocins",
+        fullName: "Phage Tail-Like Bacteriocins",
+        phonetic: "/ˈteɪ.lə.sɪnz/",
+        pos: "生物武器 (n.)",
+        category: "⚔️ 宿主-病毒军备竞赛",
+        definition: "尾素 / 噬菌体尾样细菌素。细菌编码的‘无头噬菌体毒针’，保留收缩尾部与尾丝，通过单颗粒穿刺致死竞争细菌，无核酸不能自主复制。",
+        examples: [
+          {
+            en: "Tailocins mediate inter-strain warfare on plant leaves without self-killing the producer.",
+            cn: "尾素在植物叶片上介导菌株间的领地战争，且不会误伤产生菌自身。",
+            source: "Science 2024 (Gong Yuhang 汇报文献)"
+          }
+        ]
+      },
+      {
+        id: "def_02",
+        word: "Abi",
+        fullName: "Abortive Infection System",
+        phonetic: "/ˈeɪ.baɪ/",
+        pos: "自杀免疫 (n.)",
+        category: "⚔️ 宿主-病毒军备竞赛",
+        definition: "流产感染 (Abortive Infection)。细菌在感知噬菌体入侵后，主动破坏自身能量池（如降解全部 NAD⁺）诱导细胞利他自杀，同归于尽以保护整个菌群。",
+        examples: [
+          {
+            en: "Abortive infection acts as an altruistic defense mechanism halting viral replication across the colony.",
+            cn: "流产感染作为一种利他性防御机制，阻止了病毒在整个细菌菌落中的蔓延扩散。",
+            source: "Cell Host & Microbe"
+          }
+        ]
+      },
+      {
+        id: "def_03",
+        word: "NAD Salvage Pathway",
+        fullName: "Nicotinamide Adenine Dinucleotide Salvage Pathway",
+        phonetic: "/ˌɛn.eɪˈdiː ˈsæl.vɪdʒ ˈpæθ.weɪ/",
+        pos: "反防御通路 (n.)",
+        category: "⚔️ 宿主-病毒军备竞赛",
+        definition: "NAD⁺ 拯救途径。利用烟酰胺 (NAM) 经 NAMPT 与 nadM 快速两步合成辅酶 NAD⁺ 的代谢途径，噬菌体常用此强行重建能量池以抵抗宿主的 NAD 耗竭防御。",
+        examples: [
+          {
+            en: "Phage-encoded NAD salvage enzymes rebuild cellular NAD+ pools to overcome host immune exhaustion.",
+            cn: "噬菌体编码的 NAD 拯救酶能够重建胞内 NAD+ 能量池，从而克服宿主的免疫耗竭。",
+            source: "Pan Cunli 答辩核心机制 (Slide 11)"
+          }
+        ]
+      },
+      {
+        id: "def_04",
+        word: "TIR-STING",
+        fullName: "Toll/Interleukin-1 Receptor and STING-like Signaling Complex",
+        phonetic: "/tɪər stɪŋ/",
+        pos: "免疫复合体 (n.)",
+        category: "⚔️ 宿主-病毒军备竞赛",
+        definition: "原核 TIR-STING 免疫系统。细菌利用 TIR 结构域的 NADase 水解活性与 STING 环二核苷酸信号级联，感知噬菌体侵染并耗尽 NAD⁺ 触发防御反应。",
+        examples: [
+          {
+            en: "vOTU0052 carries predicted TIR-STING anti-defense genes flanking its NAD reconstitution module.",
+            cn: "vOTU0052 在其 NAD 重建模块侧翼携带了预测的 TIR-STING 反防御候选基因。",
+            source: "Pan Cunli 答辩报告 (Slide 13)"
+          }
+        ]
+      },
+      {
+        id: "def_05",
+        word: "O-antigen",
+        fullName: "Lipopolysaccharide O-Antigen Polysaccharide",
+        phonetic: "/oʊ ˈæn.tɪ.dʒən/",
+        pos: "表面受体 (n.)",
+        category: "⚔️ 宿主-病毒军备竞赛",
+        definition: "O-抗原 / 脂多糖特异性多糖。革兰氏阴性菌外膜最外层的高度可变糖链，是噬菌体尾丝及尾素识别结合的主要初级靶标受体。",
+        examples: [
+          {
+            en: "Loss of the long O-antigen chain renders bacteria resistant to tailocin puncture at a severe fitness cost.",
+            cn: "长 O-抗原糖链的缺失使细菌对尾素穿刺产生抗性，但伴随着严重的生存适应度代价。",
+            source: "Science 2024 (Backman et al.)"
+          }
+        ]
+      },
+
+      // 🧬 4. 宏病毒组与生物信息 (Metavirome & Bioinformatics)
+      {
+        id: "bio_01",
+        word: "vOTU",
+        fullName: "Viral Operational Taxonomic Unit",
+        phonetic: "/viː ˈoʊ.tiː.juː/",
+        pos: "计算分类单元 (n.)",
+        category: "🧬 宏病毒组与生物信息",
+        definition: "病毒操作分类单元 (Viral Operational Taxonomic Unit)。通常以 95% 核酸相似度及 85% 对齐覆盖度聚类得到的未培养病毒‘物种级’计算单元。",
+        examples: [
+          {
+            en: "We assembled 3,060 vOTUs from reclaimed water, of which 77.4% met the novel-genus criterion.",
+            cn: "我们从再生水中组装获得了 3,060 个 vOTUs，其中 77.4% 符合新属界定标准。",
+            source: "RecWaterVirome 核心数据 (Slide 1)"
+          }
+        ]
+      },
+      {
+        id: "bio_02",
+        word: "AMG",
+        fullName: "Auxiliary Metabolic Gene",
+        phonetic: "/ˌeɪ.ɛmˈdʒiː/",
+        pos: "功能基因 (n.)",
+        category: "🧬 宏病毒组与生物信息",
+        definition: "辅助代谢基因 (Auxiliary Metabolic Gene)。噬菌体从宿主基因组中捕获并保留的代谢酶基因，用于在侵染期强行重编程宿主的能量与物质代谢。",
+        examples: [
+          {
+            en: "AMGs maintain critical metabolic fluxes during infection when the host's native genome is degraded.",
+            cn: "在宿主自身基因组被降解后，AMG 维持了侵染期间关键的代谢通量。",
+            source: "Nature Reviews Microbiology"
+          }
+        ]
+      },
+      {
+        id: "bio_03",
+        word: "Coverage Masking",
+        fullName: "Breadth of Horizontal Coverage Masking",
+        phonetic: "/ˈkʌv.ər.ɪdʒ ˈmæsk.ɪŋ/",
+        pos: "质控算法 (n.)",
+        category: "🧬 宏病毒组与生物信息",
+        definition: "覆盖度掩码过滤。要求比对 Reads 必须覆盖病毒 Contig 全长的 70% 以上，防止局部保守片段虚假比对导致假阳性计数。",
+        examples: [
+          {
+            en: "Coverage masking filtered 1,675 count-positive vOTUs down to 60 high-confidence detections in gc1.",
+            cn: "覆盖度掩码在 gc1 样本中将 1,675 个计数阳性 vOTU 严格过滤为 60 个高置信度检出。",
+            source: "RecWaterVirome 质控质询 (Slide 4)"
+          }
+        ]
+      },
+      {
+        id: "bio_04",
+        word: "Rarefaction",
+        fullName: "Random Subsampling / Rarefaction Normalization",
+        phonetic: "/ˌrɛr.ɪˈfæk.ʃən/",
+        pos: "标准化方法 (n.)",
+        category: "🧬 宏病毒组与生物信息",
+        definition: "稀疏抽平法。将所有样本的测序 Reads 随机无放回重抽样到相同的最低测序深度，消除因文库大小悬殊导致的多样性伪差异。",
+        examples: [
+          {
+            en: "Alpha diversity was calculated after rarefaction to the lowest sequencing depth of 1.65 million reads.",
+            cn: "在随机抽平至最低测序深度 165 万 reads 后，计算了各样本的 Alpha 多样性。",
+            source: "导师质询重点解答 (Slide 4 & 7)"
+          }
+        ]
+      },
+      {
+        id: "bio_05",
+        word: "Simpson's Paradox",
+        fullName: "Simpson's Reversal Paradox (Confounding Bias)",
+        phonetic: "/ˈsɪmp.sənz ˈpær.ə.dɑːks/",
+        pos: "统计悖论 (n.)",
+        category: "🧬 宏病毒组与生物信息",
+        definition: "辛普森悖论。当混杂因素（如序列长度与完整度）未被控制时，整体数据呈现的表面规律与真实分层规律完全矛盾的统计学假象。",
+        examples: [
+          {
+            en: "The apparent virulence factor enrichment in temperate phages was an artifact of Simpson's paradox driven by contig length.",
+            cn: "温和噬菌体表面上的毒力基因富集，是由于序列长度差异驱动的辛普森悖论假象。",
+            source: "导师严厉点评 (Slide 17)"
+          }
+        ]
+      },
+
+      // 🧪 5. 核心代谢与重要基因 (Metabolism & Essential Genes)
+      {
+        id: "met_01",
+        word: "NAMPT",
+        fullName: "Nicotinamide Phosphoribosyltransferase (nadV)",
+        phonetic: "/ˈnæmpt/",
+        pos: "限速酶 (n.)",
+        category: "🧪 核心代谢与重要基因",
+        definition: "烟酰胺磷酸核糖转移酶。催化烟酰胺 (NAM) + PRPP 生成烟酰胺单核苷酸 (NMN)，为 NAD 拯救合成途径的第一步限速酶。",
+        examples: [
+          {
+            en: "Phage NAMPT enzymes clustered tightly with canonical NadV rather than the bacterial PncB clade.",
+            cn: "噬菌体 NAMPT 酶在进化树上紧密聚类在标准 NadV 分支，而非细菌 PncB 分支。",
+            source: "Pan Cunli 进化树分析 (Slide 15)"
+          }
+        ]
+      },
+      {
+        id: "met_02",
+        word: "nadM",
+        fullName: "Nicotinamide Mononucleotide Adenylyltransferase (NMNAT)",
+        phonetic: "/ˌɛn.eɪ.diː ˈɛm/",
+        pos: "关键酶 (n.)",
+        category: "🧪 核心代谢与重要基因",
+        definition: "烟酰胺单核苷酸腺苷酰转移酶。催化 NMN + ATP 生成最终辅酶 NAD⁺，与 NAMPT 串联构成致密的双酶微循环。",
+        examples: [
+          {
+            en: "Six vOTUs carry a compact operon-like module containing nadM and NAMPT on the same strand.",
+            cn: "6 个 vOTUs 在同链同向转录单元中携带了包含 nadM 与 NAMPT 的致密操纵子样模块。",
+            source: "RecWaterVirome 核心发现 (Slide 11)"
+          }
+        ]
+      },
+      {
+        id: "met_03",
+        word: "folA",
+        fullName: "Dihydrofolate Reductase (DHFR / Folate Biosynthesis)",
+        phonetic: "/ˈfoʊl.eɪ/",
+        pos: "辅酶代谢 (n.)",
+        category: "🧪 核心代谢与重要基因",
+        definition: "二氢叶酸还原酶 (叶酸生物合成途径关键酶)。提供单碳单位转移，专用于噬菌体爆发期大量合成胸腺嘧啶与嘌呤核苷酸。",
+        examples: [
+          {
+            en: "folA was identified as a recurrent AMG across multiple reclaimed water viromes.",
+            cn: "folA 被鉴定为在多个再生水宏病毒组中重复保守出现的辅助代谢基因。",
+            source: "AMG 筛选热图 (Slide 10)"
+          }
+        ]
+      },
+
+      // 🎯 6. 顶级学术论文核心动词 (Academic Action Verbs)
+      {
+        id: "v_01",
+        word: "confer",
+        fullName: "confer (conferred, conferring)",
+        phonetic: "/kənˈfɜːr/",
+        pos: "动词 v.",
+        category: "🎯 顶级学术论文核心动词",
+        definition: "赋予、带来 (通常指基因或突变赋予细菌/病毒某种生存优势、抗性或表型)。",
+        examples: [
+          {
+            en: "This NAD salvage module confers enhanced reproductive fitness during host immunity activation.",
+            cn: "该 NAD 拯救模块在宿主免疫激活期间赋予噬菌体增强的繁殖适应度。",
+            source: "Nature Communications 经典句式"
+          }
+        ]
+      },
+      {
+        id: "v_02",
+        word: "elucidate",
+        fullName: "elucidate (elucidated, elucidating)",
+        phonetic: "/ɪˈluː.sə.deɪt/",
+        pos: "动词 v.",
+        category: "🎯 顶级学术论文核心动词",
+        definition: "阐明、揭示、弄清楚 (深入解释复杂的分子机制或生物学通路)。",
+        examples: [
+          {
+            en: "Future cryo-EM studies are required to elucidate the atomic details of baseplate triggering.",
+            cn: "未来需要冷冻电镜研究来阐明基板构象触发的原子级细节。",
+            source: "Science 2024 讨论部分"
+          }
+        ]
+      },
+      {
+        id: "v_03",
+        word: "recapitulate",
+        fullName: "recapitulate (recapitulated, recapitulating)",
+        phonetic: "/ˌriː.kəˈpɪtʃ.ə.leɪt/",
+        pos: "动词 v.",
+        category: "🎯 顶级学术论文核心动词",
+        definition: "重现、模拟 (在实验室体内或体外实验中成功重现自然界发生的现象)。",
+        examples: [
+          {
+            en: "Co-culture experiments in Planta recapitulated the competitive suppression observed in wild populations.",
+            cn: "植物体内的共培养实验成功重现了在野生种群中观察到的竞争抑制现象。",
+            source: "Science 2024 (Backman et al.)"
+          }
+        ]
+      },
+      {
+        id: "v_04",
+        word: "abrogate",
+        fullName: "abrogate (abrogated, abrogating)",
+        phonetic: "/ˈæb.rə.ɡeɪt/",
+        pos: "动词 v.",
+        category: "🎯 顶级学术论文核心动词",
+        definition: "彻底消除、废除 (指突变或化学抑制剂完全破坏某种生化功能或表型)。",
+        examples: [
+          {
+            en: "Point mutations in the catalytic triad completely abrogated the NADase enzymatic activity.",
+            cn: "催化三联体中的点突变彻底消除了其 NADase 酶促活性。",
+            source: "Cell 2021 (Ofir et al.)"
+          }
+        ]
+      },
+      {
+        id: "v_05",
+        word: "disarm",
+        fullName: "disarm (disarmed, disarming)",
+        phonetic: "/dɪsˈɑːrm/",
+        pos: "动词 v.",
+        category: "🎯 顶级学术论文核心动词",
+        definition: "解除武装、缴械 (在基因工程中特指敲除病原菌或噬菌体的毒力/毒针武器)。",
+        examples: [
+          {
+            en: "The disarmed mutant strain lacking tail fibers grew normally but lost competitive superiority.",
+            cn: "敲除尾丝基因的‘被缴械’突变株生长正常，但丧失了竞争抑制优势。",
+            source: "Science 2024 (Gong Yuhang 汇报文献)"
+          }
+        ]
+      },
+
+      // 🔗 7. 逻辑推演与转折连接词 (Transitions & Connectors)
+      {
+        id: "conn_01",
+        word: "concomitant with",
+        fullName: "concomitant with (co-occurring with)",
+        phonetic: "/kənˈkɑː.mə.tənt wɪð/",
+        pos: "介词短语 prep.",
+        category: "🔗 逻辑推演与转折连接词",
+        definition: "伴随着、与...同时发生 (表达两个生物学事件高度同步关联)。",
+        examples: [
+          {
+            en: "Plaque formation occurred concomitant with rapid depletion of intracellular ATP pools.",
+            cn: "噬菌斑的形成伴随着细胞内 ATP 能量池的迅速耗竭。",
+            source: "J. Bacteriol"
+          }
+        ]
+      },
+      {
+        id: "conn_02",
+        word: "ostensibly",
+        fullName: "ostensibly (apparently, seemingly)",
+        phonetic: "/ɑːˈstɛn.sə.bli/",
+        pos: "副词 adv.",
+        category: "🔗 逻辑推演与转折连接词",
+        definition: "表面上看起来、据称 (暗示实际机制可能更为复杂或有待推敲)。",
+        examples: [
+          {
+            en: "The prophage region was ostensibly dormant until activated by UV irradiation stress.",
+            cn: "此前噬菌体区域表面上处于休眠状态，直到被紫外照射应激所激活。",
+            source: "Nature Reviews"
+          }
+        ]
+      },
+      {
+        id: "conn_03",
+        word: "contingent upon",
+        fullName: "contingent upon / contingent on",
+        phonetic: "/kənˈtɪn.dʒənt əˈpɒn/",
+        pos: "短语 adj.",
+        category: "🔗 逻辑推演与转折连接词",
+        definition: "取决于、以...为前提 (表达强烈的必要因果条件)。",
+        examples: [
+          {
+            en: "Successful tailocin puncture is strictly contingent upon tail fiber recognition of the O-antigen.",
+            cn: "尾素的成功穿刺严格取决于其尾丝对靶标 O-抗原的精准识别。",
+            source: "Science 2024"
+          }
+        ]
+      },
+
+      // 🧫 8. 细菌与噬菌体分类命名 (Taxonomy & Strains)
+      {
+        id: "tax_01",
+        word: "Caudoviricetes",
+        fullName: "Class Caudoviricetes (Tailed Double-Stranded DNA Bacteriophages)",
+        phonetic: "/ˌkɔː.doʊ.vaɪˈrɪs.ɪ.tiːz/",
+        pos: "病毒纲名 (n.)",
+        category: "🧫 细菌与噬菌体分类命名",
+        definition: "有尾噬菌体纲。ICTV 官方分类学纲名，统领所有具有双链 DNA (dsDNA) 与立体尾部结构的经典有尾噬菌体（占水体病毒 99% 以上）。",
+        examples: [
+          {
+            en: "Over 99% of our assembled viromes were classified into the class Caudoviricetes.",
+            cn: "我们组装获得的宏病毒组中有超过 99% 归属于有尾噬菌体纲。",
+            source: "RecWaterVirome 分类统计 (Slide 8)"
+          }
+        ]
+      },
+      {
+        id: "tax_02",
+        word: "Myoviridae",
+        fullName: "Family Myoviridae (Contractile Tailed Phages)",
+        phonetic: "/ˌmaɪ.oʊˈvɪr.ɪ.diː/",
+        pos: "病毒形态科 (n.)",
+        category: "🧫 细菌与噬菌体分类命名",
+        definition: "肌尾噬菌体科 (长肌尾)。具有长而刚硬且能够收缩的双层尾鞘结构（以 T4 噬菌体和尾素为代表）。",
+        examples: [
+          {
+            en: "Contractile R-type tailocins share direct morphological ancestry with Myoviridae phage tails.",
+            cn: "收缩性 R 型尾素与长肌尾噬菌体的尾部在形态学上共享直接的演化祖先来源。",
+            source: "PLoS Pathogens"
+          }
+        ]
+      },
+      {
+        id: "tax_03",
+        word: "Siphoviridae",
+        fullName: "Family Siphoviridae (Long Non-Contractile Tailed Phages)",
+        phonetic: "/ˌsɪf.oʊˈvɪr.ɪ.diː/",
+        pos: "病毒形态科 (n.)",
+        category: "🧫 细菌与噬菌体分类命名",
+        definition: "长尾噬菌体科 (非收缩长尾)。具有长而柔软但不可收缩的尾部结构（以 Lambda $\lambda$ 噬菌体为代表）。",
+        examples: [
+          {
+            en: "Non-contractile F-type pyocins evolved independently from Siphoviridae phage tails.",
+            cn: "非收缩性 F 型绿脓菌素是从长尾噬菌体的尾部结构独立演化而来的。",
+            source: "Journal of Virology"
+          }
+        ]
+      },
+      {
+        id: "tax_04",
+        word: "Podoviridae",
+        fullName: "Family Podoviridae (Short Tailed Phages)",
+        phonetic: "/ˌpoʊ.doʊˈvɪr.ɪ.diː/",
+        pos: "病毒形态科 (n.)",
+        category: "🧫 细菌与噬菌体分类命名",
+        definition: "短尾噬菌体科。仅具有极短且不可收缩的短小尾部结构（以 T7 噬菌体为代表）。",
+        examples: [
+          {
+            en: "Podoviridae phages inject their DNA using an internal core complex rather than a long tail tube.",
+            cn: "短尾噬菌体利用内部核心蛋白复合体而非长尾管来注入病毒 DNA。",
+            source: "Virology Textbook"
+          }
+        ]
+      }
+    ];
+
+    // App State
+    let wordsData = [...INITIAL_WORDS];
+    let activeCategories = new Set();
+    let favoriteWords = new Set();
+    
+    // Persistent Spaced Repetition State: { [id]: { status: 'mastered'|'unmastered', failCount: 0, lastReview: 0 } }
+    let masteryMap = {};
+    let flashcardQueue = [];
+    let currentFcIndex = 0;
+
+    // Load from LocalStorage
+    function loadStorage() {
+      try {
+        const storedFavs = localStorage.getItem('phagemind_favs');
+        if (storedFavs) favoriteWords = new Set(JSON.parse(storedFavs));
+
+        const storedMastery = localStorage.getItem('phagemind_mastery_v2');
+        if (storedMastery) {
+          masteryMap = JSON.parse(storedMastery);
+        } else {
+          // migrate from old format if any
+          const oldMastery = localStorage.getItem('phagemind_mastery');
+          if (oldMastery) {
+            const oldParsed = JSON.parse(oldMastery);
+            Object.keys(oldParsed).forEach(k => {
+              masteryMap[k] = { status: oldParsed[k], failCount: 0, lastReview: Date.now() };
+            });
+          }
+        }
+
+        const customWords = localStorage.getItem('phagemind_custom_words');
+        if (customWords) {
+          const parsed = JSON.parse(customWords);
+          wordsData = [...INITIAL_WORDS, ...parsed];
+        }
+      } catch (e) {
+        console.error("Storage loading error:", e);
+      }
+    }
+
+    function saveStorage() {
+      localStorage.setItem('phagemind_favs', JSON.stringify([...favoriteWords]));
+      localStorage.setItem('phagemind_mastery_v2', JSON.stringify(masteryMap));
+    }
+
+    // TTS Pronunciation Engine
+    function speakWord(text) {
+      if (!('speechSynthesis' in window)) {
+        alert('您的浏览器暂不支持原生语音朗读，请尝试 Chrome/Edge/Safari 浏览器。');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US';
+      utterance.rate = 0.88;
+      utterance.pitch = 1.0;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // Render Categories
+    function renderCategoryChips() {
+      const categories = [...new Set(wordsData.map(w => w.category))];
+      const container = document.getElementById('categoryChips');
+      container.innerHTML = '';
+
+      // "All" chip
+      const allChip = document.createElement('div');
+      allChip.className = `chip ${activeCategories.size === 0 ? 'active' : ''}`;
+      allChip.innerHTML = `🌐 全部板块 (${wordsData.length})`;
+      allChip.onclick = () => {
+        activeCategories.clear();
+        renderCategoryChips();
+        renderCards();
+      };
+      container.appendChild(allChip);
+
+      // Starred chip
+      const starChip = document.createElement('div');
+      starChip.className = `chip ${activeCategories.has('STARRED') ? 'active' : ''}`;
+      starChip.innerHTML = `⭐ 收藏生词 (${favoriteWords.size})`;
+      starChip.onclick = () => {
+        if (activeCategories.has('STARRED')) {
+          activeCategories.delete('STARRED');
+        } else {
+          activeCategories.clear();
+          activeCategories.add('STARRED');
+        }
+        renderCategoryChips();
+        renderCards();
+      };
+      container.appendChild(starChip);
+
+      // Category chips
+      categories.forEach(cat => {
+        const count = wordsData.filter(w => w.category === cat).length;
+        const chip = document.createElement('div');
+        chip.className = `chip ${activeCategories.has(cat) ? 'active' : ''}`;
+        chip.innerHTML = `${cat} (${count})`;
+        chip.onclick = () => {
+          if (activeCategories.has('STARRED')) activeCategories.delete('STARRED');
+          if (activeCategories.has(cat)) {
+            activeCategories.delete(cat);
+          } else {
+            activeCategories.add(cat);
+          }
+          renderCategoryChips();
+          renderCards();
+        };
+        container.appendChild(chip);
+      });
+
+      // Update Header Text
+      const countSpan = document.getElementById('activeFilterCount');
+      if (activeCategories.size === 0) {
+        countSpan.textContent = "显示全部板块";
+      } else if (activeCategories.has('STARRED')) {
+        countSpan.textContent = "仅显示收藏生词";
+      } else {
+        countSpan.textContent = `已选择 ${activeCategories.size} 个板块并集`;
+      }
+    }
+
+    // Render Word Cards
+    function renderCards() {
+      const grid = document.getElementById('cardsGrid');
+      const searchVal = document.getElementById('searchInput').value.trim().toLowerCase();
+
+      const filtered = wordsData.filter(item => {
+        // Search text matching
+        const matchSearch = !searchVal || 
+          item.word.toLowerCase().includes(searchVal) ||
+          (item.fullName && item.fullName.toLowerCase().includes(searchVal)) ||
+          item.definition.toLowerCase().includes(searchVal) ||
+          (item.phonetic && item.phonetic.toLowerCase().includes(searchVal)) ||
+          item.examples.some(ex => ex.en.toLowerCase().includes(searchVal) || ex.cn.toLowerCase().includes(searchVal));
+
+        // Category matching
+        let matchCat = true;
+        if (activeCategories.size > 0) {
+          if (activeCategories.has('STARRED')) {
+            matchCat = favoriteWords.has(item.id);
+          } else {
+            matchCat = activeCategories.has(item.category);
+          }
+        }
+
+        return matchSearch && matchCat;
+      });
+
+      // Stats
+      document.getElementById('statsText').innerHTML = `共找到 <b>${filtered.length}</b> 个专业核心词汇 (总库容量: ${wordsData.length})`;
+
+      grid.innerHTML = '';
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 48px; background: var(--bg-card); border-radius: var(--radius); border: 1px dashed var(--border-color);">
+            <div style="font-size: 36px; margin-bottom: 12px;">🔍</div>
+            <div style="font-size: 16px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px;">没有找到匹配的专业词汇</div>
+            <div style="font-size: 13px; color: var(--text-muted);">您可以尝试搜索其它关键词，或点击右上角「➕ 添加新词」将其录入到您的专属库中！</div>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const isFav = favoriteWords.has(item.id);
+        const card = document.createElement('div');
+        card.className = 'word-card';
+
+        // Clean Full Name block (Just clean audio button without redundant text)
+        const fullNameHtml = item.fullName ? `
+          <div class="fullname-box" onclick="event.stopPropagation();">
+            <span class="fullname-text">${item.fullName}</span>
+            <button class="audio-btn" title="朗读英文全称" onclick="speakWord('${item.fullName.replace(/'/g, "\\'")}')">🔊</button>
+          </div>
+        ` : '';
+
+        card.innerHTML = `
+          <div class="card-top">
+            <div class="word-header">
+              <span class="word-title">${item.word}</span>
+              ${item.phonetic ? `<span class="phonetic">${item.phonetic}</span>` : ''}
+              <button class="audio-btn" title="播放缩写/单词发音" onclick="event.stopPropagation(); speakWord('${item.word.replace(/'/g, "\\'")}')">🔊</button>
+            </div>
+            <button class="star-btn ${isFav ? 'active' : ''}" title="加入生词本/收藏" onclick="event.stopPropagation(); toggleFav('${item.id}')">
+              ${isFav ? '★' : '☆'}
+            </button>
+          </div>
+
+          ${fullNameHtml}
+
+          <div class="pos-badge">${item.pos || '专业术语'}</div>
+          <div class="definition">${item.definition}</div>
+
+          <div class="category-tag">
+            <span>🏷️ ${item.category}</span>
+          </div>
+
+          <div class="expand-hint">
+            <span>📖 点击卡片展开/收起顶刊真实文献例句 ▾</span>
+          </div>
+
+          <div class="examples-container" id="ex_${item.id}">
+            ${item.examples.map(ex => `
+              <div class="example-item">
+                <div class="example-en">${ex.en}</div>
+                <div class="example-cn">${ex.cn}</div>
+                ${ex.source ? `<span class="example-source">📌 来源: ${ex.source}</span>` : ''}
+              </div>
+            `).join('')}
+          </div>
+        `;
+
+        // Click to toggle examples
+        card.onclick = () => {
+          const exDiv = document.getElementById(`ex_${item.id}`);
+          exDiv.classList.toggle('show');
+        };
+
+        grid.appendChild(card);
+      });
+    }
+
+    // Toggle Favorite
+    window.toggleFav = function(id) {
+      if (favoriteWords.has(id)) {
+        favoriteWords.delete(id);
+      } else {
+        favoriteWords.add(id);
+      }
+      saveStorage();
+      renderCategoryChips();
+      renderCards();
+    };
+
+    // =========================================================================
+    // Persistent Spaced Repetition Flashcard Engine (Shanbay / Baicizhan Model)
+    // =========================================================================
+    function initFlashcardQueue() {
+      // 1. Filter out permanently mastered words from default daily review deck!
+      const unmastered = wordsData.filter(w => !masteryMap[w.id] || masteryMap[w.id].status !== 'mastered');
+      
+      if (unmastered.length === 0) {
+        // If all mastered, show gentle completion message
+        alert("🎉 恭喜您！当前词库所有词汇均已被您斩获掌握！将为您开启全量温故知新模式。");
+        flashcardQueue = [...wordsData];
+      } else {
+        // Sort unmastered by failCount descending (hardest words first!)
+        unmastered.sort((a, b) => {
+          const fa = (masteryMap[a.id] && masteryMap[a.id].failCount) || 0;
+          const fb = (masteryMap[b.id] && masteryMap[b.id].failCount) || 0;
+          return fb - fa;
+        });
+        flashcardQueue = [...unmastered];
+      }
+
+      currentFcIndex = 0;
+      updateFlashcardStats();
+    }
+
+    function updateFlashcardStats() {
+      const masteredCount = wordsData.filter(w => masteryMap[w.id] && masteryMap[w.id].status === 'mastered').length;
+      const reviewCount = wordsData.length - masteredCount;
+      document.getElementById('fcMasteredCount').textContent = `🟢 已斩获: ${masteredCount}`;
+      document.getElementById('fcReviewCount').textContent = `🔴 今日待攻克: ${flashcardQueue.length}`;
+    }
+
+    function renderCurrentFlashcard() {
+      if (flashcardQueue.length === 0) {
+        alert("🎉 太棒了！今日待攻克生词已全部清理完毕！");
+        initFlashcardQueue();
+      }
+
+      if (currentFcIndex >= flashcardQueue.length) currentFcIndex = 0;
+      if (currentFcIndex < 0) currentFcIndex = flashcardQueue.length - 1;
+
+      const item = flashcardQueue[currentFcIndex];
+
+      // Front Elements
+      document.getElementById('fcWord').textContent = item.word;
+      document.getElementById('fcPhonetic').textContent = item.phonetic || '';
+      document.getElementById('fcPosFront').textContent = item.pos || '专业术语';
+
+      // Audio buttons for Front
+      document.getElementById('fcSpeakWordFrontBtn').onclick = (e) => {
+        e.stopPropagation();
+        speakWord(item.word);
+      };
+
+      const frontFullNameBox = document.getElementById('fcFullNameBoxFront');
+      if (item.fullName) {
+        frontFullNameBox.style.display = 'flex';
+        document.getElementById('fcFullNameFront').textContent = item.fullName;
+        document.getElementById('fcSpeakFullNameBtnFront').onclick = (e) => {
+          e.stopPropagation();
+          speakWord(item.fullName);
+        };
+      } else {
+        frontFullNameBox.style.display = 'none';
+      }
+
+      // Back Elements
+      document.getElementById('fcWordBack').textContent = item.word;
+      document.getElementById('fcPosBack').textContent = item.pos || '专业术语';
+      document.getElementById('fcDef').textContent = item.definition;
+
+      // Audio buttons for Back
+      document.getElementById('fcSpeakWordBackBtn').onclick = (e) => {
+        e.stopPropagation();
+        speakWord(item.word);
+      };
+
+      const backFullNameBox = document.getElementById('fcFullNameBoxBack');
+      if (item.fullName) {
+        backFullNameBox.style.display = 'flex';
+        document.getElementById('fcFullNameBack').textContent = item.fullName;
+        document.getElementById('fcSpeakFullNameBtnBack').onclick = (e) => {
+          e.stopPropagation();
+          speakWord(item.fullName);
+        };
+      } else {
+        backFullNameBox.style.display = 'none';
+      }
+
+      const exBox = document.getElementById('fcExBox');
+      if (item.examples && item.examples.length > 0) {
+        exBox.style.display = 'block';
+        document.getElementById('fcExEn').textContent = item.examples[0].en;
+        document.getElementById('fcExCn').textContent = item.examples[0].cn;
+        document.getElementById('fcExSource').textContent = item.examples[0].source ? `📌 来源: ${item.examples[0].source}` : '';
+      } else {
+        exBox.style.display = 'none';
+      }
+
+      // Reset to Front
+      document.getElementById('flashcardFront').style.display = 'block';
+      document.getElementById('flashcardBack').style.display = 'none';
+    }
+
+    // Spaced Repetition Actions
+    function markHard() {
+      const item = flashcardQueue[currentFcIndex];
+      
+      // Update persistent record
+      if (!masteryMap[item.id]) masteryMap[item.id] = { failCount: 0 };
+      masteryMap[item.id].status = 'unmastered';
+      masteryMap[item.id].failCount = (masteryMap[item.id].failCount || 0) + 1;
+      masteryMap[item.id].lastReview = Date.now();
+      saveStorage();
+      updateFlashcardStats();
+
+      // Insert into current session review queue 3 cards later so it repeats soon!
+      const repeatPos = Math.min(currentFcIndex + 3, flashcardQueue.length);
+      flashcardQueue.splice(repeatPos, 0, item);
+
+      // Move next
+      currentFcIndex++;
+      renderCurrentFlashcard();
+    }
+
+    function markEasy() {
+      const item = flashcardQueue[currentFcIndex];
+
+      // Mark permanently as mastered!
+      if (!masteryMap[item.id]) masteryMap[item.id] = { failCount: 0 };
+      masteryMap[item.id].status = 'mastered';
+      masteryMap[item.id].lastReview = Date.now();
+      saveStorage();
+
+      // Remove from active review queue permanently!
+      flashcardQueue.splice(currentFcIndex, 1);
+      updateFlashcardStats();
+      renderCurrentFlashcard();
+    }
+
+    // Robust Initialization (Fixes iOS Safari / Local File where DOMContentLoaded already fired)
+    function initApp() {
+      loadStorage();
+      renderCategoryChips();
+      renderCards();
+
+      // Share to phone button
+      const shareBtn = document.getElementById('shareToPhoneBtn');
+      if (shareBtn) {
+        shareBtn.onclick = async () => {
+          if (navigator.share) {
+            try {
+              await navigator.share({
+                title: 'PhageMind 英语掌控库',
+                text: '潘存丽专属噬菌体与生命科学英语掌握库',
+                url: window.location.href
+              });
+              return;
+            } catch (err) {
+              console.log('Share dismissed');
+            }
+          }
+          alert(`📲 发送到手机只需两步：\n\n1. 最小化当前浏览器，在 Mac 桌面上找到【Phage_English_Mastery_Hub.html】文件；\n2. 鼠标右键点击它 -> 选择【共享】->【隔空投送 (AirDrop)】发送给您的 iPhone；\n（或者直接拖进微信电脑版【文件传输助手】发给手机！）`);
+        };
+      }
+
+      // Search input
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) searchInput.addEventListener('input', renderCards);
+
+      // Reset filters
+      const clearBtn = document.getElementById('clearFiltersBtn');
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          if (searchInput) searchInput.value = '';
+          activeCategories.clear();
+          renderCategoryChips();
+          renderCards();
+        });
+      }
+
+      // Add Modal
+      const modal = document.getElementById('addModalOverlay');
+      const openModalBtn = document.getElementById('openAddModalBtn');
+      const closeModalBtn = document.getElementById('closeAddModalBtn');
+      const cancelAddBtn = document.getElementById('cancelAddBtn');
+      if (openModalBtn) openModalBtn.onclick = () => modal.classList.add('active');
+      if (closeModalBtn) closeModalBtn.onclick = () => modal.classList.remove('active');
+      if (cancelAddBtn) cancelAddBtn.onclick = () => modal.classList.remove('active');
+
+      const addForm = document.getElementById('addWordForm');
+      if (addForm) {
+        addForm.onsubmit = (e) => {
+          e.preventDefault();
+          const word = document.getElementById('newWord').value.trim();
+          const fullName = document.getElementById('newFullName').value.trim();
+          const phonetic = document.getElementById('newPhonetic').value.trim();
+          const pos = document.getElementById('newPos').value.trim();
+          const def = document.getElementById('newDef').value.trim();
+          const cat = document.getElementById('newCat').value;
+          const exEn = document.getElementById('newExEn').value.trim();
+          const exCn = document.getElementById('newExCn').value.trim();
+          const source = document.getElementById('newSource').value.trim();
+
+          const newEntry = {
+            id: 'custom_' + Date.now(),
+            word,
+            fullName,
+            phonetic,
+            pos,
+            category: cat,
+            definition: def,
+            examples: exEn ? [{ en: exEn, cn: exCn, source: source || '用户自定义输入' }] : []
+          };
+
+          try {
+            const customWords = JSON.parse(localStorage.getItem('phagemind_custom_words') || '[]');
+            customWords.push(newEntry);
+            localStorage.setItem('phagemind_custom_words', JSON.stringify(customWords));
+          } catch(e) {}
+
+          wordsData.push(newEntry);
+          modal.classList.remove('active');
+          addForm.reset();
+          renderCategoryChips();
+          renderCards();
+          alert(`🎉 单词 "${word}" 已成功录入您的专属知识库！`);
+        };
+      }
+
+      // Flashcard Mode Toggle
+      const regularView = document.getElementById('regularView');
+      const flashcardView = document.getElementById('flashcardView');
+      const toggleFcBtn = document.getElementById('toggleFlashcardBtn');
+      const exitFcBtn = document.getElementById('exitFlashcardBtn');
+
+      if (toggleFcBtn) {
+        toggleFcBtn.onclick = () => {
+          regularView.style.display = 'none';
+          flashcardView.classList.add('active');
+          initFlashcardQueue();
+          renderCurrentFlashcard();
+        };
+      }
+
+      if (exitFcBtn) {
+        exitFcBtn.onclick = () => {
+          flashcardView.classList.remove('active');
+          regularView.style.display = 'block';
+          renderCards();
+        };
+      }
+
+      // Flip card on click
+      const fcCard = document.getElementById('flashcardCard');
+      if (fcCard) {
+        fcCard.onclick = () => {
+          const front = document.getElementById('flashcardFront');
+          const back = document.getElementById('flashcardBack');
+          if (front.style.display === 'none') {
+            front.style.display = 'block';
+            back.style.display = 'none';
+          } else {
+            front.style.display = 'none';
+            back.style.display = 'block';
+          }
+        };
+      }
+
+      // Flashcard button controls
+      const hardBtn = document.getElementById('fcMarkHardBtn');
+      const easyBtn = document.getElementById('fcMarkEasyBtn');
+      const nextBtn = document.getElementById('fcNextBtn');
+      const resetBtn = document.getElementById('fcResetProgressBtn');
+
+      if (hardBtn) hardBtn.onclick = markHard;
+      if (easyBtn) easyBtn.onclick = markEasy;
+      if (nextBtn) nextBtn.onclick = () => {
+        currentFcIndex++;
+        renderCurrentFlashcard();
+      };
+
+      if (resetBtn) {
+        resetBtn.onclick = () => {
+          if (confirm("⚠️ 确定要重置所有卡片的记忆进度吗？所有已斩获的单词将重新回到复习库。")) {
+            masteryMap = {};
+            saveStorage();
+            initFlashcardQueue();
+            renderCurrentFlashcard();
+            alert("✅ 记忆进度已重置完成！");
+          }
+        };
+      }
+    }
+
+    // Execute immediately or on load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initApp);
+    } else {
+      initApp();
+    }
+  </script>
+</body>
+</html>
