@@ -822,840 +822,1223 @@
   <!-- Raw Initial Data & Logic -->
   <script>
     const INITIAL_WORDS = [
-      // 🔬 1. 实验方法与技术 (Assays & Wet-lab Tech)
       {
-        id: "exp_01",
-        word: "ELISA",
-        fullName: "Enzyme-Linked Immunosorbent Assay",
-        phonetic: "/ɪˈlaɪ.zə/",
-        pos: "实验技术 (n.)",
-        category: "🔬 实验方法与技术",
-        definition: "酶联免疫吸附测定。通过抗原抗体特异性结合与酶促显色反应，定量检测微量蛋白质、噬菌体衣壳或抗体效价的标准实验。",
-        examples: [
-          {
-            en: "We quantified the viral capsid protein concentration using a sandwich ELISA assay.",
-            cn: "我们使用双抗体夹心 ELISA 法定量测定了病毒衣壳蛋白的浓度。",
-            source: "Nature Microbiology 实验方法标准"
-          }
-        ]
+            "id": "exp_01",
+            "word": "ELISA",
+            "fullName": "Enzyme-Linked Immunosorbent Assay",
+            "phonetic": "/ɪˈlaɪ.zə/",
+            "pos": "实验技术 (n.)",
+            "category": "🔬 实验方法与技术",
+            "definition": "酶联免疫吸附测定。通过抗原抗体特异性结合与酶促显色反应，定量检测微量蛋白质、噬菌体衣壳或抗体效价的标准实验。",
+            "examples": [
+                  {
+                        "en": "We quantified the viral capsid protein concentration using a sandwich ELISA assay.",
+                        "cn": "我们使用双抗体夹心 ELISA 法定量测定了病毒衣壳蛋白的浓度。",
+                        "source": "Nature Microbiology 实验方法标准"
+                  }
+            ]
       },
       {
-        id: "exp_02",
-        word: "Plaque Assay",
-        fullName: "Double-Layer Agar Plaque Assay",
-        phonetic: "/plæk əˈseɪ/",
-        pos: "效价测定 (n.)",
-        category: "🔬 实验方法与技术",
-        definition: "双层琼脂噬菌斑测定。通过计数活体噬菌体在敏感宿主菌草坪上形成的透明裂解斑（Plaque），测定活体病毒效价 (PFU/mL)。",
-        examples: [
-          {
-            en: "Serial dilutions of the lysate were subjected to a double-layer agar plaque assay to determine viable titer.",
-            cn: "对裂解液进行梯度稀释，并通过双层琼脂噬菌斑测定法测定活体噬菌体效价。",
-            source: "噬菌体经典实验规范"
-          }
-        ]
+            "id": "exp_02",
+            "word": "Plaque Assay",
+            "fullName": "Double-Layer Agar Plaque Assay",
+            "phonetic": "/plæk əˈseɪ/",
+            "pos": "效价测定 (n.)",
+            "category": "🔬 实验方法与技术",
+            "definition": "双层琼脂噬菌斑测定。通过计数活体噬菌体在敏感宿主菌草坪上形成的透明裂解斑（Plaque），测定活体病毒效价 (PFU/mL)。",
+            "examples": [
+                  {
+                        "en": "Serial dilutions of the lysate were subjected to a double-layer agar plaque assay to determine viable titer.",
+                        "cn": "对裂解液进行梯度稀释，并通过双层琼脂噬菌斑测定法测定活体噬菌体效价。",
+                        "source": "SOP 03: Spot & Plaque Assay (Silke 培训规范)"
+                  }
+            ]
       },
       {
-        id: "exp_03",
-        word: "One-Step Growth Curve",
-        fullName: "One-Step Growth Experiment",
-        phonetic: "/wʌn stɛp ɡroʊθ kɜːrv/",
-        pos: "动力学分析 (n.)",
-        category: "🔬 实验方法与技术",
-        definition: "一步生长曲线。用于精确测定噬菌体吸附常数、潜伏期（Latent period）和平均爆发量（Burst size）的经典动力学方法。",
-        examples: [
-          {
-            en: "The one-step growth curve revealed a latent period of 25 min and an average burst size of 120 virions per cell.",
-            cn: "一步生长曲线显示该噬菌体的潜伏期为 25 分钟，单个宿主细胞的平均爆发量为 120 个病毒颗粒。",
-            source: "RecWaterVirome 湿实验方案"
-          }
-        ]
+            "id": "exp_03",
+            "word": "Spot Assay",
+            "fullName": "Spot Dilution / Drop Assay",
+            "phonetic": "/spɒt əˈseɪ/",
+            "pos": "快速定性 (n.)",
+            "category": "🔬 实验方法与技术",
+            "definition": "滴板实验 / 点滴实验。将微量噬菌体悬液梯度滴加在细菌平板草坪上，快速定性筛查噬菌体的宿主侵染谱或抑菌圈大小。",
+            "examples": [
+                  {
+                        "en": "Host range was preliminarily screened via spot assays on 40 clinical bacterial isolates.",
+                        "cn": "通过在 40 株临床分离细菌上进行滴板实验，初步筛查了噬菌体的宿主谱范围。",
+                        "source": "SOP 03: Spot & Plaque Assay 培训记录"
+                  }
+            ]
       },
       {
-        id: "exp_04",
-        word: "RB-TnSeq",
-        fullName: "Random Barcode Transposon Sequencing",
-        phonetic: "/ɑːr biː tiː ɛn siːk/",
-        pos: "高通量筛选 (n.)",
-        category: "🔬 实验方法与技术",
-        definition: "随机条形码转座子测序。利用带唯一条形码的转座子饱和突变全基因组，单次测序即可同时高通量评估数千个基因的抗性与适应度贡献。",
-        examples: [
-          {
-            en: "Using RB-TnSeq, they screened 70 resistance genes and identified the LPS O-antigen cluster as the tailocin receptor.",
-            cn: "利用 RB-TnSeq 技术，作者筛选了 70 个抗性基因，并最终锁定了脂多糖 O-抗原基因簇作为尾素的靶标受体。",
-            source: "Science 2024 (Gong Yuhang 汇报文献)"
-          }
-        ]
+            "id": "exp_04",
+            "word": "Halo",
+            "fullName": "Plaque Halo (Depolymerase Diffusion Ring)",
+            "phonetic": "/ˈheɪ.loʊ/",
+            "pos": "表型特征 (n.)",
+            "category": "🔬 实验方法与技术",
+            "definition": "噬菌斑外围光晕 / 酶解晕圈。噬菌斑周围随着时间持续扩大的半透明光环，由游离多糖解聚酶剥除细菌荚膜引起，细菌细胞未死但失去多糖外壳。",
+            "examples": [
+                  {
+                        "en": "An expanding translucent halo surrounded the clear plaque, indicating high diffusion of phage-encoded depolymerase.",
+                        "cn": "透明噬菌斑周围出现不断扩大的半透明晕圈（Halo），表明噬菌体编码的多糖解聚酶具有强扩散水解活性。",
+                        "source": "Depolymerase Protocols: 生物膜与多糖活性测定"
+                  }
+            ]
       },
       {
-        id: "exp_05",
-        word: "Cryo-EM",
-        fullName: "Cryogenic Electron Microscopy",
-        phonetic: "/ˌkraɪ.oʊ iː ˈɛm/",
-        pos: "结构生物学 (n.)",
-        category: "🔬 实验方法与技术",
-        definition: "冷冻透射电子显微镜。在近天然超低温状态下解析噬菌体完整纳米机器（衣壳、收缩尾鞘、基板触发态）高分辨率三维立体结构。",
-        examples: [
-          {
-            en: "Cryo-EM reconstructions resolved the contractile tail sheath and baseplate conformational changes during infection.",
-            cn: "冷冻电镜三维重构解析了侵染过程中噬菌体收缩性尾鞘与基板的构象变化。",
-            source: "Nature 结构生物学"
-          }
-        ]
+            "id": "exp_05",
+            "word": "One-Step Growth Curve",
+            "fullName": "One-Step Growth Experiment",
+            "phonetic": "/wʌn stɛp ɡroʊθ kɜːrv/",
+            "pos": "动力学分析 (n.)",
+            "category": "🔬 实验方法与技术",
+            "definition": "一步生长曲线。精确测定噬菌体吸附常数、潜伏期（Latent period）和平均爆发量（Burst size）的经典动力学方法。",
+            "examples": [
+                  {
+                        "en": "The one-step growth curve revealed a latent period of 25 min and an average burst size of 120 virions per cell.",
+                        "cn": "一步生长曲线显示该噬菌体的潜伏期为 25 分钟，单个宿主细胞的平均爆发量为 120 个病毒颗粒。",
+                        "source": "RecWaterVirome 湿实验方案"
+                  }
+            ]
       },
       {
-        id: "exp_06",
-        word: "Spot Assay",
-        fullName: "Spot Dilution / Drop Assay",
-        phonetic: "/spɒt əˈseɪ/",
-        pos: "快速定性 (n.)",
-        category: "🔬 实验方法与技术",
-        definition: "滴板实验 / 点滴实验。将微量噬菌体悬液梯度点滴在细菌平板草坪上，快速定性筛查宿主侵染谱或抑菌圈大小。",
-        examples: [
-          {
-            en: "Host range was preliminarily screened via spot assays on 40 clinical bacterial isolates.",
-            cn: "通过在 40 株临床分离细菌上进行滴板实验，初步筛查了噬菌体的宿主谱范围。",
-            source: "2026-08-17 组会记录"
-          }
-        ]
+            "id": "exp_06",
+            "word": "dPCR",
+            "fullName": "Digital Polymerase Chain Reaction (Absolute Quantification)",
+            "phonetic": "/diː piː siː ɑːr/",
+            "pos": "核酸定量 (n.)",
+            "category": "🔬 实验方法与技术",
+            "definition": "微滴式数字 PCR。通过将反应体系分割为数万个微反应单元，无需标准曲线即可实现低拷贝靶基因或病毒颗粒绝对定量计数的超灵敏技术。",
+            "examples": [
+                  {
+                        "en": "Digital PCR (dPCR) enabled absolute copy number quantification of phage genes in low-biomass environmental waters.",
+                        "cn": "数字 PCR (dPCR) 实现了低生物量环境水体中噬菌体基因的绝对拷贝数定量。",
+                        "source": "SOP 20: dPCR 培训规范 (Jinxian 培训记录)"
+                  }
+            ]
       },
       {
-        id: "exp_07",
-        word: "Flow Cytometry",
-        fullName: "Fluorescence-Activated Cell Sorting / Analysis",
-        phonetic: "/floʊ saɪˈtɑː.mə.tri/",
-        pos: "单细胞分析 (n.)",
-        category: "🔬 实验方法与技术",
-        definition: "流式细胞术 (FCM)。利用核酸荧光染色（如 SYBR Gold/Green）对水体微滤样中的游离病毒颗粒（VLP）进行高通量绝对定量计数与亚群分析。",
-        examples: [
-          {
-            en: "Viral-like particles (VLPs) in reclaimed water were enumerated by flow cytometry after SYBR Green staining.",
-            cn: "再生水中的病毒样颗粒经 SYBR Green 荧光染色后，通过流式细胞术进行绝对定量计数。",
-            source: "RecWaterVirome 实验质控"
-          }
-        ]
+            "id": "exp_07",
+            "word": "RB-TnSeq",
+            "fullName": "Random Barcode Transposon Sequencing",
+            "phonetic": "/ɑːr biː tiː ɛn siːk/",
+            "pos": "高通量筛选 (n.)",
+            "category": "🔬 实验方法与技术",
+            "definition": "随机条形码转座子测序。全基因组突变体库结合唯一条形码测序，单次实验即可同时高通量定量评估数千个基因的抗性与适应度表型。",
+            "examples": [
+                  {
+                        "en": "Using RB-TnSeq, they screened 70 resistance genes and identified the LPS O-antigen cluster as the tailocin receptor.",
+                        "cn": "利用 RB-TnSeq 技术，作者筛选了 70 个抗性基因，并最终锁定了脂多糖 O-抗原基因簇作为尾素的靶标受体。",
+                        "source": "Science 2024 (Gong Yuhang 汇报文献)"
+                  }
+            ]
       },
       {
-        id: "exp_08",
-        word: "Halo",
-        fullName: "Plaque Halo (Depolymerase Diffusion Ring)",
-        phonetic: "/ˈheɪ.loʊ/",
-        pos: "表型特征 (n.)",
-        category: "🔬 实验方法与技术",
-        definition: "噬菌斑外围光晕 / 酶解晕圈。噬菌斑周围随着时间持续扩大的半透明半透明光环，由游离扩散的多糖解聚酶剥离细菌荚膜引起，细菌细胞仍存活但失去外壳。",
-        examples: [
-          {
-            en: "An expanding translucent halo surrounded the clear plaque, indicating high diffusion of phage-encoded depolymerase.",
-            cn: "透明噬菌斑周围出现不断扩大的半透明晕圈（Halo），表明噬菌体编码的多糖解聚酶具有强扩散水解活性。",
-            source: "Frontiers in Microbiology 经典表型"
-          }
-        ]
-      },
-
-      // 🦠 2. 噬菌体结构与解剖学 (Phage Anatomy & Morphology)
-      {
-        id: "anat_01",
-        word: "Capsid",
-        fullName: "Viral Capsid / Protein Shell",
-        phonetic: "/ˈkæp.sɪd/",
-        pos: "头部结构 (n.)",
-        category: "🦠 噬菌体结构与解剖学",
-        definition: "衣壳 / 头部外壳。由规则排列的衣壳蛋白单体组成的正二十面体外壳，内部高压压缩包裹并保护噬菌体基因组核酸（dsDNA）。",
-        examples: [
-          {
-            en: "The icosahedral capsid protects viral DNA against ambient environmental nucleases.",
-            cn: "正二十面体衣壳保护病毒 DNA 免受外界环境核酸酶的降解破坏。",
-            source: "噬菌体解剖学标准"
-          }
-        ]
+            "id": "exp_08",
+            "word": "Cryo-EM",
+            "fullName": "Cryogenic Electron Microscopy",
+            "phonetic": "/ˌkraɪ.oʊ iː ˈɛm/",
+            "pos": "结构生物学 (n.)",
+            "category": "🔬 实验方法与技术",
+            "definition": "冷冻透射电镜。在近天然超低温玻璃态冰中解析噬菌体完整纳米机器（衣壳、收缩尾鞘、基板触发态）高分辨率三维立体结构。",
+            "examples": [
+                  {
+                        "en": "Cryo-EM reconstructions resolved the contractile tail sheath and baseplate conformational changes during infection.",
+                        "cn": "冷冻电镜三维重构解析了侵染过程中噬菌体收缩性尾鞘与基板的构象变化。",
+                        "source": "Nature 结构生物学"
+                  }
+            ]
       },
       {
-        id: "anat_02",
-        word: "Portal Protein",
-        fullName: "Portal Protein Complex (Connector)",
-        phonetic: "/ˈpɔːr.təl ˈproʊ.tiːn/",
-        pos: "通道蛋白 (n.)",
-        category: "🦠 噬菌体结构与解剖学",
-        definition: "门蛋白 / 入口复合体。位于衣壳特异顶角处由 12 个亚基组成的环状纳米通道，负责组装时高压泵入 DNA，并在侵染时作为核酸释放的通道守门人。",
-        examples: [
-          {
-            en: "The portal protein acts as a molecular gatekeeper connecting the viral head to the tail connector.",
-            cn: "门蛋白作为分子通道守门人，连接着病毒头部与尾部接头蛋白。",
-            source: "Cell 噬菌体组装专题"
-          }
-        ]
+            "id": "exp_09",
+            "word": "Flow Cytometry",
+            "fullName": "Fluorescence-Activated Cell Sorting / Analysis",
+            "phonetic": "/floʊ saɪˈtɑː.mə.tri/",
+            "pos": "单细胞分析 (n.)",
+            "category": "🔬 实验方法与技术",
+            "definition": "流式细胞术 (FCM)。利用核酸荧光染色（如 SYBR Gold/Green）对水体微滤样中的游离病毒颗粒（VLP）进行高通量绝对定量计数与亚群分选。",
+            "examples": [
+                  {
+                        "en": "Viral-like particles (VLPs) in reclaimed water were enumerated by flow cytometry after SYBR Green staining.",
+                        "cn": "再生水中的病毒样颗粒经 SYBR Green 荧光染色后，通过流式细胞术进行绝对定量计数。",
+                        "source": "RecWaterVirome 实验质控"
+                  }
+            ]
       },
       {
-        id: "anat_03",
-        word: "Tail Sheath",
-        fullName: "Contractile Tail Sheath",
-        phonetic: "/teɪl ʃiːθ/",
-        pos: "动力结构 (n.)",
-        category: "🦠 噬菌体结构与解剖学",
-        definition: "收缩性尾鞘。长肌尾噬菌体（Myoviridae）尾部外层的圆柱形螺旋弹簧机械结构，侵染时发生不可逆高能收缩，推动尾管刺透细菌细胞壁。",
-        examples: [
-          {
-            en: "Tailocin killing relies on high-energy contraction of the tail sheath to puncture the outer membrane.",
-            cn: "尾素的杀伤依赖于尾鞘的高能机械收缩，从而刺穿靶细菌的外膜。",
-            source: "Science 2024 尾素机理"
-          }
-        ]
+            "id": "exp_10",
+            "word": "PEG Precipitation",
+            "fullName": "Polyethylene Glycol Phage Precipitation (PEG 8000)",
+            "phonetic": "/pɛɡ prɪˌsɪp.ɪˈteɪ.ʃən/",
+            "pos": "病毒浓缩 (n.)",
+            "category": "🔬 实验方法与技术",
+            "definition": "聚乙二醇沉淀法。利用 PEG 8000 与高盐（NaCl）使溶液中游离病毒颗粒发生相分离沉淀，是大体积环境水样中富集浓缩噬菌体的标准预处理方法。",
+            "examples": [
+                  {
+                        "en": "Bacteriophages were concentrated from 1 L of wastewater lysate via 10% PEG 8000 precipitation overnight at 4°C.",
+                        "cn": "通过 10% PEG 8000 在 4℃ 过夜沉淀，从 1 升污水裂解液中高效富集浓缩噬菌体。",
+                        "source": "SOP 12: Phage Isolation from Wastewater (Jinling 培训)"
+                  }
+            ]
       },
       {
-        id: "anat_04",
-        word: "Tail Tube",
-        fullName: "Rigid Inner Tail Tube",
-        phonetic: "/teɪl tuːb/",
-        pos: "穿刺结构 (n.)",
-        category: "🦠 噬菌体结构与解剖学",
-        definition: "尾管 / 核心刺针。位于尾鞘内部的中空中枢管道，尾鞘收缩时尾管被暴力推出刺入细胞质膜，形成跨膜纳米孔道注入 DNA。",
-        examples: [
-          {
-            en: "The rigid inner tail tube penetrates the peptidoglycan layer, forming a channel for DNA ejection.",
-            cn: "刚性内部尾管刺穿肽聚糖层，形成 DNA 喷射的纳米通道。",
-            source: "Nature Reviews Microbiology"
-          }
-        ]
+            "id": "exp_11",
+            "word": "CsCl Ultracentrifugation",
+            "fullName": "Cesium Chloride Density Gradient Ultracentrifugation",
+            "phonetic": "/ˈsiː.zi.əm ˈklɔːr.aɪd ˌʌl.trəˌsɛn.trɪ.fjuːˈɡeɪ.ʃən/",
+            "pos": "精细纯化 (n.)",
+            "category": "🔬 实验方法与技术",
+            "definition": "氯化铯密度梯度超速离心。根据病毒颗粒浮力密度（Buoyant density, 1.45–1.50 g/cm³）在超速离心管中形成锐利沉降带，彻底分离完整噬菌体与宿主杂质。",
+            "examples": [
+                  {
+                        "en": "CsCl equilibrium gradient ultracentrifugation separated intact virions from empty capsids and host genomic DNA.",
+                        "cn": "氯化铯平衡密度梯度超速离心将完整病毒颗粒与空衣壳及宿主基因组 DNA 彻底分离。",
+                        "source": "SOP 07: Phage Isolation and Characterisation"
+                  }
+            ]
       },
       {
-        id: "anat_05",
-        word: "Baseplate",
-        fullName: "Tail Baseplate Complex",
-        phonetic: "/ˈbeɪs.pleɪt/",
-        pos: "信号中枢 (n.)",
-        category: "🦠 噬菌体结构与解剖学",
-        definition: "基板复合体。噬菌体尾部末端的高度复杂的纳米多蛋白复合体，负责感知受体结合信号，并触发整个尾部发生星形构象重排与发射收缩。",
-        examples: [
-          {
-            en: "Receptor recognition induces a dome-to-star transition in the baseplate complex.",
-            cn: "受体识别会诱导基板复合体发生从穹顶形到星形的构象转换。",
-            source: "Nature 结构生物学"
-          }
-        ]
+            "id": "exp_12",
+            "word": "Alkaline Lysis",
+            "fullName": "Alkaline Lysis Plasmid Extraction Method",
+            "phonetic": "/ˈæl.kə.laɪn ˈlaɪ.sɪs/",
+            "pos": "质粒提取 (n.)",
+            "category": "🔬 实验方法与技术",
+            "definition": "碱裂解法。利用 NaOH/SDS 变性宿主染色体 DNA 与蛋白质，中和后染色体网状沉淀而共价闭合环状质粒 DNA 快速复性并保留在清液中。",
+            "examples": [
+                  {
+                        "en": "Plasmids were extracted via modified alkaline lysis followed by silica-column purification.",
+                        "cn": "通过改进的碱裂解法结合硅胶柱纯化提取获得高纯度质粒 DNA。",
+                        "source": "SOP 21: Plasmid Extraction SOP (Jinling 培训)"
+                  }
+            ]
       },
       {
-        id: "anat_06",
-        word: "Tail Fiber",
-        fullName: "Tail Fiber Protein (Receptor Binding)",
-        phonetic: "/teɪl ˈfaɪ.bər/",
-        pos: "识别触手 (n.)",
-        category: "🦠 噬菌体结构与解剖学",
-        definition: "尾丝。从基板向外伸出的触手状长蛋白，尖端包含受体结合结构域 (RBP)，专门用于高亲和力特异性吸附细菌表面的糖链或外膜蛋白。",
-        examples: [
-          {
-            en: "Tail fiber variation dictates strain-level killing specificity against different O-antigen types.",
-            cn: "尾丝基因的变异决定了针对不同 O-抗原受体类型的菌株级特异性杀伤谱。",
-            source: "Science 2024 (Backman et al.)"
-          }
-        ]
+            "id": "prot_01",
+            "word": "IPTG Induction",
+            "fullName": "Isopropyl β-D-1-thiogalactopyranoside Induction",
+            "phonetic": "/ˌaɪ.piː.tiːˈdʒiː ɪnˈdʌk.ʃən/",
+            "pos": "表达诱导 (n.)",
+            "category": "🧪 蛋白表达、纯化与生物膜活性",
+            "definition": "IPTG 诱导表达。乳糖操纵子（lac operon）的不可水解模拟物，结合阻遏蛋白使其构象改变脱离操纵基因，强效启动 T7 启动子驱动重组蛋白高量表达。",
+            "examples": [
+                  {
+                        "en": "Recombinant depolymerase expression was induced with 0.5 mM IPTG at 16°C overnight to prevent inclusion body formation.",
+                        "cn": "在 16℃ 下加入 0.5 mM IPTG 过夜诱导重组解聚酶表达，防止形成包涵体沉淀。",
+                        "source": "Depolymerase SOP 3: 细菌培养与蛋白诱导表达"
+                  }
+            ]
       },
       {
-        id: "anat_07",
-        word: "TMP",
-        fullName: "Tape Measure Protein",
-        phonetic: "/tiː ɛm piː/",
-        pos: "分子标尺 (n.)",
-        category: "🦠 噬菌体结构与解剖学",
-        definition: "卷尺蛋白 (Tape Measure Protein)。长尾噬菌体尾部中轴贯穿的一根超长单分子多肽，其氨基酸链的物理长度直接精确决定了噬菌体尾巴组装时的物理长度。",
-        examples: [
-          {
-            en: "The tape measure protein acts as a molecular ruler specifying the precise length of the siphovirus tail.",
-            cn: "卷尺蛋白充当分子标尺，精确指定长尾噬菌体尾部的物理长度。",
-            source: "Trends in Microbiology"
-          }
-        ]
+            "id": "prot_02",
+            "word": "Ni-NTA Chromatography",
+            "fullName": "Nickel-Nitrilotriacetic Acid Affinity Chromatography",
+            "phonetic": "/ˈnɪk.əl ˌnaɪ.trɪ.loʊ.traɪ.əˈsiː.tɪk ˈæs.ɪd/",
+            "pos": "亲和层析 (n.)",
+            "category": "🧪 蛋白表达、纯化与生物膜活性",
+            "definition": "镍柱固定化金属亲和层析 (IMAC)。固定在基质上的 Ni²⁺ 与重组蛋白末端的 6×His 标签组氨酸残基发生高亲和力配位螯合，实现特异性吸附纯化。",
+            "examples": [
+                  {
+                        "en": "His-tagged depolymerase was captured on a Ni-NTA agarose column and washed to remove non-specific binding proteins.",
+                        "cn": "带 His 标签的重组解聚酶被结合在 Ni-NTA 琼脂糖柱上，经洗涤去除宿主杂蛋白。",
+                        "source": "Depolymerase SOP 4: 解聚酶蛋白纯化 SOP"
+                  }
+            ]
       },
       {
-        id: "anat_08",
-        word: "Depolymerase",
-        fullName: "Polysaccharide Depolymerase / Tailspike Lyase",
-        phonetic: "/diːˌpɑː.lɪ.məˈreɪs/",
-        pos: "水解酶 (n.)",
-        category: "🦠 噬菌体结构与解剖学",
-        definition: "多糖解聚酶。常位于噬菌体尾刺（Tailspike）末端的水解酶，专一性降解细菌致密的荚膜多糖（CPS）或生物膜基质（EPS），为尾丝暴露并接触膜受体开辟通道。",
-        examples: [
-          {
-            en: "Tailspike-associated depolymerases degrade the thick K-antigen capsule of Klebsiella pneumoniae.",
-            cn: "尾刺相关的多糖解聚酶能快速降解肺炎克雷伯菌致密的 K-抗原厚荚膜。",
-            source: "Viruses 顶刊专题"
-          }
-        ]
-      },
-
-      // ⚔️ 3. 宿主-病毒军备竞赛 (Defense & Anti-Defense)
-      {
-        id: "def_01",
-        word: "Tailocins",
-        fullName: "Phage Tail-Like Bacteriocins",
-        phonetic: "/ˈteɪ.lə.sɪnz/",
-        pos: "生物武器 (n.)",
-        category: "⚔️ 宿主-病毒军备竞赛",
-        definition: "尾素 / 噬菌体尾样细菌素。细菌编码的‘无头噬菌体毒针’，保留收缩尾部与尾丝，通过单颗粒穿刺致死竞争细菌，无核酸不能自主复制。",
-        examples: [
-          {
-            en: "Tailocins mediate inter-strain warfare on plant leaves without self-killing the producer.",
-            cn: "尾素在植物叶片上介导菌株间的领地战争，且不会误伤产生菌自身。",
-            source: "Science 2024 (Gong Yuhang 汇报文献)"
-          }
-        ]
+            "id": "prot_03",
+            "word": "Imidazole Elution",
+            "fullName": "Imidazole Competitive Elution Gradient",
+            "phonetic": "/ɪˈmɪd.ə.zoʊl ɪˈluː.ʃən/",
+            "pos": "洗脱步骤 (n.)",
+            "category": "🧪 蛋白表达、纯化与生物膜活性",
+            "definition": "咪唑竞争性洗脱。由于咪唑结构类似组氨酸侧链，高浓度咪唑（250–500 mM）可竞争性取代 His-tag 与 Ni²⁺ 的配位结合，将目标重组蛋白洗脱下来。",
+            "examples": [
+                  {
+                        "en": "Target protein was eluted with elution buffer containing 300 mM imidazole at high purity.",
+                        "cn": "使用含有 300 mM 咪唑的洗脱缓冲液将高纯度目标蛋白特异性洗脱。",
+                        "source": "Depolymerase SOP 4: 缓冲液配制方案"
+                  }
+            ]
       },
       {
-        id: "def_02",
-        word: "Abi",
-        fullName: "Abortive Infection System",
-        phonetic: "/ˈeɪ.baɪ/",
-        pos: "自杀免疫 (n.)",
-        category: "⚔️ 宿主-病毒军备竞赛",
-        definition: "流产感染 (Abortive Infection)。细菌在感知噬菌体入侵后，主动破坏自身能量池（如降解全部 NAD⁺）诱导细胞利他自杀，同归于尽以保护整个菌群。",
-        examples: [
-          {
-            en: "Abortive infection acts as an altruistic defense mechanism halting viral replication across the colony.",
-            cn: "流产感染作为一种利他性防御机制，阻止了病毒在整个细菌菌落中的蔓延扩散。",
-            source: "Cell Host & Microbe"
-          }
-        ]
+            "id": "prot_04",
+            "word": "Dialysis",
+            "fullName": "Membrane Dialysis Buffer Exchange",
+            "phonetic": "/daɪˈæl.ə.sɪs/",
+            "pos": "透析除盐 (n.)",
+            "category": "🧪 蛋白表达、纯化与生物膜活性",
+            "definition": "透析置换缓冲液。利用半透膜（透析袋 14 kDa MWCO）截留大分子蛋白，使小分子咪唑和盐分扩散置换到保存缓冲液（如含甘油的 PBS）中。",
+            "examples": [
+                  {
+                        "en": "Eluted fractions were dialyzed overnight against PBS containing 10% glycerol to remove cytotoxic imidazole.",
+                        "cn": "洗脱组分在含 10% 甘油的 PBS 中过夜透析，彻底去除具有细胞毒性的高浓度咪唑。",
+                        "source": "Depolymerase 蛋白纯化记录"
+                  }
+            ]
       },
       {
-        id: "def_03",
-        word: "NAD Salvage Pathway",
-        fullName: "Nicotinamide Adenine Dinucleotide Salvage Pathway",
-        phonetic: "/ˌɛn.eɪˈdiː ˈsæl.vɪdʒ ˈpæθ.weɪ/",
-        pos: "反防御通路 (n.)",
-        category: "⚔️ 宿主-病毒军备竞赛",
-        definition: "NAD⁺ 拯救途径。利用烟酰胺 (NAM) 经 NAMPT 与 nadM 快速两步合成辅酶 NAD⁺ 的代谢途径，噬菌体常用此强行重建能量池以抵抗宿主的 NAD 耗竭防御。",
-        examples: [
-          {
-            en: "Phage-encoded NAD salvage enzymes rebuild cellular NAD+ pools to overcome host immune exhaustion.",
-            cn: "噬菌体编码的 NAD 拯救酶能够重建胞内 NAD+ 能量池，从而克服宿主的免疫耗竭。",
-            source: "Pan Cunli 答辩核心机制 (Slide 11)"
-          }
-        ]
+            "id": "prot_05",
+            "word": "SDS-PAGE",
+            "fullName": "Sodium Dodecyl Sulfate-Polyacrylamide Gel Electrophoresis",
+            "phonetic": "/ˌɛs.diː.ɛs ˈpeɪdʒ/",
+            "pos": "蛋白电泳 (n.)",
+            "category": "🧪 蛋白表达、纯化与生物膜活性",
+            "definition": "十二烷基硫酸钠-聚丙烯酰胺凝胶电泳。利用阴离子表面活性剂 SDS 消除电荷差异并使蛋白线性化，按分子量大小精确分离鉴定目标蛋白条带与纯度。",
+            "examples": [
+                  {
+                        "en": "SDS-PAGE analysis confirmed a single prominent band corresponding to the expected 72 kDa depolymerase monomer.",
+                        "cn": "SDS-PAGE 分析证实了与预期 72 kDa 解聚酶单体分子量完全吻合的单一纯净条带。",
+                        "source": "Depolymerase SDS Result 实验记录"
+                  }
+            ]
       },
       {
-        id: "def_04",
-        word: "TIR-STING",
-        fullName: "Toll/Interleukin-1 Receptor and STING-like Signaling Complex",
-        phonetic: "/tɪər stɪŋ/",
-        pos: "免疫复合体 (n.)",
-        category: "⚔️ 宿主-病毒军备竞赛",
-        definition: "原核 TIR-STING 免疫系统。细菌利用 TIR 结构域的 NADase 水解活性与 STING 环二核苷酸信号级联，感知噬菌体侵染并耗尽 NAD⁺ 触发防御反应。",
-        examples: [
-          {
-            en: "vOTU0052 carries predicted TIR-STING anti-defense genes flanking its NAD reconstitution module.",
-            cn: "vOTU0052 在其 NAD 重建模块侧翼携带了预测的 TIR-STING 反防御候选基因。",
-            source: "Pan Cunli 答辩报告 (Slide 13)"
-          }
-        ]
+            "id": "prot_06",
+            "word": "Crystal Violet Assay",
+            "fullName": "Crystal Violet Biofilm Biomass Staining Assay",
+            "phonetic": "/ˈkrɪs.təl ˈvaɪ.ə.lət əˈseɪ/",
+            "pos": "生物膜定量 (n.)",
+            "category": "🧪 蛋白表达、纯化与生物膜活性",
+            "definition": "结晶紫生物膜染色法。结晶紫染料与微孔板上黏附的细菌生物膜基质结合，乙醇脱色后在 570/590 nm 测定吸光度，定量评估生物膜清除效率。",
+            "examples": [
+                  {
+                        "en": "Crystal violet staining revealed that 10 µg/mL depolymerase degraded 85% of preformed Klebsiella biofilm within 2 hours.",
+                        "cn": "结晶紫染色实验显示，10 µg/mL 的解聚酶在 2 小时内清除了 85% 预先形成的肺炎克雷伯菌生物膜。",
+                        "source": "Depolymerase SOP 5: 生物膜活性实验 SOP"
+                  }
+            ]
       },
       {
-        id: "def_05",
-        word: "O-antigen",
-        fullName: "Lipopolysaccharide O-Antigen Polysaccharide",
-        phonetic: "/oʊ ˈæn.tɪ.dʒən/",
-        pos: "表面受体 (n.)",
-        category: "⚔️ 宿主-病毒军备竞赛",
-        definition: "O-抗原 / 脂多糖特异性多糖。革兰氏阴性菌外膜最外层的高度可变糖链，是噬菌体尾丝及尾素识别结合的主要初级靶标受体。",
-        examples: [
-          {
-            en: "Loss of the long O-antigen chain renders bacteria resistant to tailocin puncture at a severe fitness cost.",
-            cn: "长 O-抗原糖链的缺失使细菌对尾素穿刺产生抗性，但伴随着严重的生存适应度代价。",
-            source: "Science 2024 (Backman et al.)"
-          }
-        ]
-      },
-
-      // 🧬 4. 宏病毒组与生物信息 (Metavirome & Bioinformatics)
-      {
-        id: "bio_01",
-        word: "vOTU",
-        fullName: "Viral Operational Taxonomic Unit",
-        phonetic: "/viː ˈoʊ.tiː.juː/",
-        pos: "计算分类单元 (n.)",
-        category: "🧬 宏病毒组与生物信息",
-        definition: "病毒操作分类单元 (Viral Operational Taxonomic Unit)。通常以 95% 核酸相似度及 85% 对齐覆盖度聚类得到的未培养病毒‘物种级’计算单元。",
-        examples: [
-          {
-            en: "We assembled 3,060 vOTUs from reclaimed water, of which 77.4% met the novel-genus criterion.",
-            cn: "我们从再生水中组装获得了 3,060 个 vOTUs，其中 77.4% 符合新属界定标准。",
-            source: "RecWaterVirome 核心数据 (Slide 1)"
-          }
-        ]
+            "id": "anat_01",
+            "word": "Capsid",
+            "fullName": "Viral Capsid / Protein Shell",
+            "phonetic": "/ˈkæp.sɪd/",
+            "pos": "头部结构 (n.)",
+            "category": "🦠 噬菌体结构与解剖学",
+            "definition": "衣壳 / 头部外壳。由规则排列的衣壳蛋白单体组成的正二十面体外壳，内部高压压缩包裹并保护噬菌体基因组核酸（dsDNA）。",
+            "examples": [
+                  {
+                        "en": "The icosahedral capsid protects viral DNA against ambient environmental nucleases.",
+                        "cn": "正二十面体衣壳保护病毒 DNA 免受外界环境核酸酶的降解破坏。",
+                        "source": "噬菌体解剖学标准"
+                  }
+            ]
       },
       {
-        id: "bio_02",
-        word: "AMG",
-        fullName: "Auxiliary Metabolic Gene",
-        phonetic: "/ˌeɪ.ɛmˈdʒiː/",
-        pos: "功能基因 (n.)",
-        category: "🧬 宏病毒组与生物信息",
-        definition: "辅助代谢基因 (Auxiliary Metabolic Gene)。噬菌体从宿主基因组中捕获并保留的代谢酶基因，用于在侵染期强行重编程宿主的能量与物质代谢。",
-        examples: [
-          {
-            en: "AMGs maintain critical metabolic fluxes during infection when the host's native genome is degraded.",
-            cn: "在宿主自身基因组被降解后，AMG 维持了侵染期间关键的代谢通量。",
-            source: "Nature Reviews Microbiology"
-          }
-        ]
+            "id": "anat_02",
+            "word": "Portal Protein",
+            "fullName": "Portal Protein Complex (Connector)",
+            "phonetic": "/ˈpɔːr.təl ˈproʊ.tiːn/",
+            "pos": "通道蛋白 (n.)",
+            "category": "🦠 噬菌体结构与解剖学",
+            "definition": "门蛋白 / 入口复合体。位于衣壳特异顶角处由 12 个亚基组成的环状纳米通道，负责组装时高压泵入 DNA，并在侵染时作为核酸释放的通道守门人。",
+            "examples": [
+                  {
+                        "en": "The portal protein acts as a molecular gatekeeper connecting the viral head to the tail connector.",
+                        "cn": "门蛋白作为分子通道守门人，连接着病毒头部与尾部接头蛋白。",
+                        "source": "Cell 噬菌体组装专题"
+                  }
+            ]
       },
       {
-        id: "bio_03",
-        word: "Coverage Masking",
-        fullName: "Breadth of Horizontal Coverage Masking",
-        phonetic: "/ˈkʌv.ər.ɪdʒ ˈmæsk.ɪŋ/",
-        pos: "质控算法 (n.)",
-        category: "🧬 宏病毒组与生物信息",
-        definition: "覆盖度掩码过滤。要求比对 Reads 必须覆盖病毒 Contig 全长的 70% 以上，防止局部保守片段虚假比对导致假阳性计数。",
-        examples: [
-          {
-            en: "Coverage masking filtered 1,675 count-positive vOTUs down to 60 high-confidence detections in gc1.",
-            cn: "覆盖度掩码在 gc1 样本中将 1,675 个计数阳性 vOTU 严格过滤为 60 个高置信度检出。",
-            source: "RecWaterVirome 质控质询 (Slide 4)"
-          }
-        ]
+            "id": "anat_03",
+            "word": "Tail Sheath",
+            "fullName": "Contractile Tail Sheath",
+            "phonetic": "/teɪl ʃiːθ/",
+            "pos": "动力结构 (n.)",
+            "category": "🦠 噬菌体结构与解剖学",
+            "definition": "收缩性尾鞘。长肌尾噬菌体（Myoviridae）尾部外层的圆柱形螺旋弹簧机械结构，侵染时发生不可逆高能收缩，推动尾管刺透细菌细胞壁。",
+            "examples": [
+                  {
+                        "en": "Tailocin killing relies on high-energy contraction of the tail sheath to puncture the outer membrane.",
+                        "cn": "尾素的杀伤依赖于尾鞘的高能机械收缩，从而刺穿靶细菌的外膜。",
+                        "source": "Science 2024 尾素机理"
+                  }
+            ]
       },
       {
-        id: "bio_04",
-        word: "Rarefaction",
-        fullName: "Random Subsampling / Rarefaction Normalization",
-        phonetic: "/ˌrɛr.ɪˈfæk.ʃən/",
-        pos: "标准化方法 (n.)",
-        category: "🧬 宏病毒组与生物信息",
-        definition: "稀疏抽平法。将所有样本的测序 Reads 随机无放回重抽样到相同的最低测序深度，消除因文库大小悬殊导致的多样性伪差异。",
-        examples: [
-          {
-            en: "Alpha diversity was calculated after rarefaction to the lowest sequencing depth of 1.65 million reads.",
-            cn: "在随机抽平至最低测序深度 165 万 reads 后，计算了各样本的 Alpha 多样性。",
-            source: "导师质询重点解答 (Slide 4 & 7)"
-          }
-        ]
+            "id": "anat_04",
+            "word": "Tail Tube",
+            "fullName": "Rigid Inner Tail Tube",
+            "phonetic": "/teɪl tuːb/",
+            "pos": "穿刺结构 (n.)",
+            "category": "🦠 噬菌体结构与解剖学",
+            "definition": "尾管 / 核心刺针。位于尾鞘内部的中空中枢管道，尾鞘收缩时尾管被暴力推出刺入细胞质膜，形成跨膜纳米孔道注入 DNA。",
+            "examples": [
+                  {
+                        "en": "The rigid inner tail tube penetrates the peptidoglycan layer, forming a channel for DNA ejection.",
+                        "cn": "刚性内部尾管刺穿肽聚糖层，形成 DNA 喷射的纳米通道。",
+                        "source": "Nature Reviews Microbiology"
+                  }
+            ]
       },
       {
-        id: "bio_05",
-        word: "Simpson's Paradox",
-        fullName: "Simpson's Reversal Paradox (Confounding Bias)",
-        phonetic: "/ˈsɪmp.sənz ˈpær.ə.dɑːks/",
-        pos: "统计悖论 (n.)",
-        category: "🧬 宏病毒组与生物信息",
-        definition: "辛普森悖论。当混杂因素（如序列长度与完整度）未被控制时，整体数据呈现的表面规律与真实分层规律完全矛盾的统计学假象。",
-        examples: [
-          {
-            en: "The apparent virulence factor enrichment in temperate phages was an artifact of Simpson's paradox driven by contig length.",
-            cn: "温和噬菌体表面上的毒力基因富集，是由于序列长度差异驱动的辛普森悖论假象。",
-            source: "导师严厉点评 (Slide 17)"
-          }
-        ]
-      },
-
-      // 🧪 5. 核心代谢与重要基因 (Metabolism & Essential Genes)
-      {
-        id: "met_01",
-        word: "NAMPT",
-        fullName: "Nicotinamide Phosphoribosyltransferase (nadV)",
-        phonetic: "/ˈnæmpt/",
-        pos: "限速酶 (n.)",
-        category: "🧪 核心代谢与重要基因",
-        definition: "烟酰胺磷酸核糖转移酶。催化烟酰胺 (NAM) + PRPP 生成烟酰胺单核苷酸 (NMN)，为 NAD 拯救合成途径的第一步限速酶。",
-        examples: [
-          {
-            en: "Phage NAMPT enzymes clustered tightly with canonical NadV rather than the bacterial PncB clade.",
-            cn: "噬菌体 NAMPT 酶在进化树上紧密聚类在标准 NadV 分支，而非细菌 PncB 分支。",
-            source: "Pan Cunli 进化树分析 (Slide 15)"
-          }
-        ]
+            "id": "anat_05",
+            "word": "Baseplate",
+            "fullName": "Tail Baseplate Complex",
+            "phonetic": "/ˈbeɪs.pleɪt/",
+            "pos": "信号中枢 (n.)",
+            "category": "🦠 噬菌体结构与解剖学",
+            "definition": "基板复合体。噬菌体尾部末端的高度复杂的纳米多蛋白复合体，负责感知受体结合信号，并触发整个尾部发生星形构象重排与发射收缩。",
+            "examples": [
+                  {
+                        "en": "Receptor recognition induces a dome-to-star transition in the baseplate complex.",
+                        "cn": "受体识别会诱导基板复合体发生从穹顶形到星形的构象转换。",
+                        "source": "Nature 结构生物学"
+                  }
+            ]
       },
       {
-        id: "met_02",
-        word: "nadM",
-        fullName: "Nicotinamide Mononucleotide Adenylyltransferase (NMNAT)",
-        phonetic: "/ˌɛn.eɪ.diː ˈɛm/",
-        pos: "关键酶 (n.)",
-        category: "🧪 核心代谢与重要基因",
-        definition: "烟酰胺单核苷酸腺苷酰转移酶。催化 NMN + ATP 生成最终辅酶 NAD⁺，与 NAMPT 串联构成致密的双酶微循环。",
-        examples: [
-          {
-            en: "Six vOTUs carry a compact operon-like module containing nadM and NAMPT on the same strand.",
-            cn: "6 个 vOTUs 在同链同向转录单元中携带了包含 nadM 与 NAMPT 的致密操纵子样模块。",
-            source: "RecWaterVirome 核心发现 (Slide 11)"
-          }
-        ]
+            "id": "anat_06",
+            "word": "Tail Fiber",
+            "fullName": "Tail Fiber Protein (Receptor Binding)",
+            "phonetic": "/teɪl ˈfaɪ.bər/",
+            "pos": "识别触手 (n.)",
+            "category": "🦠 噬菌体结构与解剖学",
+            "definition": "尾丝。从基板向外伸出的触手状长蛋白，尖端包含受体结合结构域 (RBP)，专门用于高亲和力特异性吸附细菌表面的糖链或外膜蛋白。",
+            "examples": [
+                  {
+                        "en": "Tail fiber variation dictates strain-level killing specificity against different O-antigen types.",
+                        "cn": "尾丝基因的变异决定了针对不同 O-抗原受体类型的菌株级特异性杀伤谱。",
+                        "source": "Science 2024 (Backman et al.)"
+                  }
+            ]
       },
       {
-        id: "met_03",
-        word: "folA",
-        fullName: "Dihydrofolate Reductase (DHFR / Folate Biosynthesis)",
-        phonetic: "/ˈfoʊl.eɪ/",
-        pos: "辅酶代谢 (n.)",
-        category: "🧪 核心代谢与重要基因",
-        definition: "二氢叶酸还原酶 (叶酸生物合成途径关键酶)。提供单碳单位转移，专用于噬菌体爆发期大量合成胸腺嘧啶与嘌呤核苷酸。",
-        examples: [
-          {
-            en: "folA was identified as a recurrent AMG across multiple reclaimed water viromes.",
-            cn: "folA 被鉴定为在多个再生水宏病毒组中重复保守出现的辅助代谢基因。",
-            source: "AMG 筛选热图 (Slide 10)"
-          }
-        ]
-      },
-
-      // 🎯 6. 顶级学术论文核心动词 (Academic Action Verbs)
-      {
-        id: "v_01",
-        word: "confer",
-        fullName: "confer (conferred, conferring)",
-        phonetic: "/kənˈfɜːr/",
-        pos: "动词 v.",
-        category: "🎯 顶级学术论文核心动词",
-        definition: "赋予、带来 (通常指基因或突变赋予细菌/病毒某种生存优势、抗性或表型)。",
-        examples: [
-          {
-            en: "This NAD salvage module confers enhanced reproductive fitness during host immunity activation.",
-            cn: "该 NAD 拯救模块在宿主免疫激活期间赋予噬菌体增强的繁殖适应度。",
-            source: "Nature Communications 经典句式"
-          }
-        ]
+            "id": "anat_07",
+            "word": "TMP",
+            "fullName": "Tape Measure Protein",
+            "phonetic": "/tiː ɛm piː/",
+            "pos": "分子标尺 (n.)",
+            "category": "🦠 噬菌体结构与解剖学",
+            "definition": "卷尺蛋白 (Tape Measure Protein)。长尾噬菌体尾部中轴贯穿的一根超长单分子多肽，其氨基酸链的物理长度直接精确决定了噬菌体尾巴组装时的物理长度。",
+            "examples": [
+                  {
+                        "en": "The tape measure protein acts as a molecular ruler specifying the precise length of the siphovirus tail.",
+                        "cn": "卷尺蛋白充当分子标尺，精确指定长尾噬菌体尾部的物理长度。",
+                        "source": "Trends in Microbiology"
+                  }
+            ]
       },
       {
-        id: "v_02",
-        word: "elucidate",
-        fullName: "elucidate (elucidated, elucidating)",
-        phonetic: "/ɪˈluː.sə.deɪt/",
-        pos: "动词 v.",
-        category: "🎯 顶级学术论文核心动词",
-        definition: "阐明、揭示、弄清楚 (深入解释复杂的分子机制或生物学通路)。",
-        examples: [
-          {
-            en: "Future cryo-EM studies are required to elucidate the atomic details of baseplate triggering.",
-            cn: "未来需要冷冻电镜研究来阐明基板构象触发的原子级细节。",
-            source: "Science 2024 讨论部分"
-          }
-        ]
+            "id": "anat_08",
+            "word": "Depolymerase",
+            "fullName": "Polysaccharide Depolymerase / Tailspike Lyase",
+            "phonetic": "/diːˌpɑː.lɪ.məˈreɪs/",
+            "pos": "水解酶 (n.)",
+            "category": "🦠 噬菌体结构与解剖学",
+            "definition": "多糖解聚酶。常位于噬菌体尾刺（Tailspike）末端的水解酶，专一性降解细菌致密的荚膜多糖（CPS）或生物膜基质（EPS），为尾丝暴露并接触膜受体开辟通道。",
+            "examples": [
+                  {
+                        "en": "Tailspike-associated depolymerases degrade the thick K-antigen capsule of Klebsiella pneumoniae.",
+                        "cn": "尾刺相关的多糖解聚酶能快速降解肺炎克雷伯菌致密的 K-抗原厚荚膜。",
+                        "source": "Viruses 顶刊专题"
+                  }
+            ]
       },
       {
-        id: "v_03",
-        word: "recapitulate",
-        fullName: "recapitulate (recapitulated, recapitulating)",
-        phonetic: "/ˌriː.kəˈpɪtʃ.ə.leɪt/",
-        pos: "动词 v.",
-        category: "🎯 顶级学术论文核心动词",
-        definition: "重现、模拟 (在实验室体内或体外实验中成功重现自然界发生的现象)。",
-        examples: [
-          {
-            en: "Co-culture experiments in Planta recapitulated the competitive suppression observed in wild populations.",
-            cn: "植物体内的共培养实验成功重现了在野生种群中观察到的竞争抑制现象。",
-            source: "Science 2024 (Backman et al.)"
-          }
-        ]
+            "id": "anat_09",
+            "word": "Endolysin",
+            "fullName": "Phage Endolysin (Peptidoglycan Hydrolase)",
+            "phonetic": "/ˌɛn.doʊˈlaɪ.sɪn/",
+            "pos": "裂解酶 (n.)",
+            "category": "🦠 噬菌体结构与解剖学",
+            "definition": "内溶素。噬菌体在裂解周期末期合成的细胞壁水解酶，从内部直接酶解细菌肽聚糖层，导致宿主细胞膨压崩溃裂解释放后代病毒。",
+            "examples": [
+                  {
+                        "en": "Recombinant endolysins exert rapid bactericidal action by enzymatically degrading bacterial peptidoglycan from without.",
+                        "cn": "重组内溶素能从细胞外部直接酶解细菌肽聚糖层，展现出迅速的杀菌效力。",
+                        "source": "Nature Biotechnology / Project 3 鸡肠道抑菌"
+                  }
+            ]
       },
       {
-        id: "v_04",
-        word: "abrogate",
-        fullName: "abrogate (abrogated, abrogating)",
-        phonetic: "/ˈæb.rə.ɡeɪt/",
-        pos: "动词 v.",
-        category: "🎯 顶级学术论文核心动词",
-        definition: "彻底消除、废除 (指突变或化学抑制剂完全破坏某种生化功能或表型)。",
-        examples: [
-          {
-            en: "Point mutations in the catalytic triad completely abrogated the NADase enzymatic activity.",
-            cn: "催化三联体中的点突变彻底消除了其 NADase 酶促活性。",
-            source: "Cell 2021 (Ofir et al.)"
-          }
-        ]
+            "id": "anat_10",
+            "word": "Holin",
+            "fullName": "Membrane-Perforating Holin Protein",
+            "phonetic": "/ˈhoʊ.lɪn/",
+            "pos": "膜孔蛋白 (n.)",
+            "category": "🦠 噬菌体结构与解剖学",
+            "definition": "穿孔素 / 霍林蛋白。噬菌体编码的小分子跨膜蛋白，在侵染末期准时在细胞质膜上聚合形成微米级大孔道，允许内溶素穿透胞质膜去降解肽聚糖。",
+            "examples": [
+                  {
+                        "en": "The timing of host cell lysis is tightly dictated by holin accumulation and triggering in the inner membrane.",
+                        "cn": "宿主细胞裂解的时间节点由穿孔素（Holin）在内膜上的积累与构象触发严格精确控制。",
+                        "source": "Microbiology Reviews"
+                  }
+            ]
       },
       {
-        id: "v_05",
-        word: "disarm",
-        fullName: "disarm (disarmed, disarming)",
-        phonetic: "/dɪsˈɑːrm/",
-        pos: "动词 v.",
-        category: "🎯 顶级学术论文核心动词",
-        definition: "解除武装、缴械 (在基因工程中特指敲除病原菌或噬菌体的毒力/毒针武器)。",
-        examples: [
-          {
-            en: "The disarmed mutant strain lacking tail fibers grew normally but lost competitive superiority.",
-            cn: "敲除尾丝基因的‘被缴械’突变株生长正常，但丧失了竞争抑制优势。",
-            source: "Science 2024 (Gong Yuhang 汇报文献)"
-          }
-        ]
-      },
-
-      // 🔗 7. 逻辑推演与转折连接词 (Transitions & Connectors)
-      {
-        id: "conn_01",
-        word: "concomitant with",
-        fullName: "concomitant with (co-occurring with)",
-        phonetic: "/kənˈkɑː.mə.tənt wɪð/",
-        pos: "介词短语 prep.",
-        category: "🔗 逻辑推演与转折连接词",
-        definition: "伴随着、与...同时发生 (表达两个生物学事件高度同步关联)。",
-        examples: [
-          {
-            en: "Plaque formation occurred concomitant with rapid depletion of intracellular ATP pools.",
-            cn: "噬菌斑的形成伴随着细胞内 ATP 能量池的迅速耗竭。",
-            source: "J. Bacteriol"
-          }
-        ]
+            "id": "def_01",
+            "word": "Tailocins",
+            "fullName": "Phage Tail-Like Bacteriocins",
+            "phonetic": "/ˈteɪ.lə.sɪnz/",
+            "pos": "生物武器 (n.)",
+            "category": "⚔️ 宿主-病毒军备竞赛",
+            "definition": "尾素 / 噬菌体尾样细菌素。细菌编码的‘无头噬菌体毒针’，保留收缩尾部与尾丝，通过单颗粒穿刺致死竞争细菌，无核酸不能自主复制。",
+            "examples": [
+                  {
+                        "en": "Tailocins mediate inter-strain warfare on plant leaves without self-killing the producer.",
+                        "cn": "尾素在植物叶片上介导菌株间的领地战争，且不会误伤产生菌自身。",
+                        "source": "Science 2024 (Gong Yuhang 汇报文献)"
+                  }
+            ]
       },
       {
-        id: "conn_02",
-        word: "ostensibly",
-        fullName: "ostensibly (apparently, seemingly)",
-        phonetic: "/ɑːˈstɛn.sə.bli/",
-        pos: "副词 adv.",
-        category: "🔗 逻辑推演与转折连接词",
-        definition: "表面上看起来、据称 (暗示实际机制可能更为复杂或有待推敲)。",
-        examples: [
-          {
-            en: "The prophage region was ostensibly dormant until activated by UV irradiation stress.",
-            cn: "此前噬菌体区域表面上处于休眠状态，直到被紫外照射应激所激活。",
-            source: "Nature Reviews"
-          }
-        ]
+            "id": "def_02",
+            "word": "Abi",
+            "fullName": "Abortive Infection System",
+            "phonetic": "/ˈeɪ.baɪ/",
+            "pos": "自杀免疫 (n.)",
+            "category": "⚔️ 宿主-病毒军备竞赛",
+            "definition": "流产感染 (Abortive Infection)。细菌在感知噬菌体入侵后，主动破坏自身能量池（如降解全部 NAD⁺）诱导细胞利他自杀，同归于尽以保护整个菌群。",
+            "examples": [
+                  {
+                        "en": "Abortive infection acts as an altruistic defense mechanism halting viral replication across the colony.",
+                        "cn": "流产感染作为一种利他性防御机制，阻止了病毒在整个细菌菌落中的蔓延扩散。",
+                        "source": "Cell Host & Microbe"
+                  }
+            ]
       },
       {
-        id: "conn_03",
-        word: "contingent upon",
-        fullName: "contingent upon / contingent on",
-        phonetic: "/kənˈtɪn.dʒənt əˈpɒn/",
-        pos: "短语 adj.",
-        category: "🔗 逻辑推演与转折连接词",
-        definition: "取决于、以...为前提 (表达强烈的必要因果条件)。",
-        examples: [
-          {
-            en: "Successful tailocin puncture is strictly contingent upon tail fiber recognition of the O-antigen.",
-            cn: "尾素的成功穿刺严格取决于其尾丝对靶标 O-抗原的精准识别。",
-            source: "Science 2024"
-          }
-        ]
-      },
-
-      // 🧫 8. 细菌与噬菌体分类命名 (Taxonomy & Strains)
-      {
-        id: "tax_01",
-        word: "Caudoviricetes",
-        fullName: "Class Caudoviricetes (Tailed Double-Stranded DNA Bacteriophages)",
-        phonetic: "/ˌkɔː.doʊ.vaɪˈrɪs.ɪ.tiːz/",
-        pos: "病毒纲名 (n.)",
-        category: "🧫 细菌与噬菌体分类命名",
-        definition: "有尾噬菌体纲。ICTV 官方分类学纲名，统领所有具有双链 DNA (dsDNA) 与立体尾部结构的经典有尾噬菌体（占水体病毒 99% 以上）。",
-        examples: [
-          {
-            en: "Over 99% of our assembled viromes were classified into the class Caudoviricetes.",
-            cn: "我们组装获得的宏病毒组中有超过 99% 归属于有尾噬菌体纲。",
-            source: "RecWaterVirome 分类统计 (Slide 8)"
-          }
-        ]
+            "id": "def_03",
+            "word": "NAD Salvage Pathway",
+            "fullName": "Nicotinamide Adenine Dinucleotide Salvage Pathway",
+            "phonetic": "/ˌɛn.eɪˈdiː ˈsæl.vɪdʒ ˈpæθ.weɪ/",
+            "pos": "反防御通路 (n.)",
+            "category": "⚔️ 宿主-病毒军备竞赛",
+            "definition": "NAD⁺ 拯救途径。利用烟酰胺 (NAM) 经 NAMPT 与 nadM 快速两步合成辅酶 NAD⁺ 的代谢途径，噬菌体常用此强行重建能量池以抵抗宿主的 NAD 耗竭防御。",
+            "examples": [
+                  {
+                        "en": "Phage-encoded NAD salvage enzymes rebuild cellular NAD+ pools to overcome host immune exhaustion.",
+                        "cn": "噬菌体编码的 NAD 拯救酶能够重建胞内 NAD+ 能量池，从而克服宿主的免疫耗竭。",
+                        "source": "Pan Cunli 答辩核心机制 (Slide 11)"
+                  }
+            ]
       },
       {
-        id: "tax_02",
-        word: "Myoviridae",
-        fullName: "Family Myoviridae (Contractile Tailed Phages)",
-        phonetic: "/ˌmaɪ.oʊˈvɪr.ɪ.diː/",
-        pos: "病毒形态科 (n.)",
-        category: "🧫 细菌与噬菌体分类命名",
-        definition: "肌尾噬菌体科 (长肌尾)。具有长而刚硬且能够收缩的双层尾鞘结构（以 T4 噬菌体和尾素为代表）。",
-        examples: [
-          {
-            en: "Contractile R-type tailocins share direct morphological ancestry with Myoviridae phage tails.",
-            cn: "收缩性 R 型尾素与长肌尾噬菌体的尾部在形态学上共享直接的演化祖先来源。",
-            source: "PLoS Pathogens"
-          }
-        ]
+            "id": "def_04",
+            "word": "TIR-STING",
+            "fullName": "Toll/Interleukin-1 Receptor and STING-like Signaling Complex",
+            "phonetic": "/tɪər stɪŋ/",
+            "pos": "免疫复合体 (n.)",
+            "category": "⚔️ 宿主-病毒军备竞赛",
+            "definition": "原核 TIR-STING 免疫系统。细菌利用 TIR 结构域的 NADase 水解活性与 STING 环二核苷酸信号级联，感知噬菌体侵染并耗尽 NAD⁺ 触发防御反应。",
+            "examples": [
+                  {
+                        "en": "vOTU0052 carries predicted TIR-STING anti-defense genes flanking its NAD reconstitution module.",
+                        "cn": "vOTU0052 在其 NAD 重建模块侧翼携带了预测的 TIR-STING 反防御候选基因。",
+                        "source": "Pan Cunli 答辩报告 (Slide 13)"
+                  }
+            ]
       },
       {
-        id: "tax_03",
-        word: "Siphoviridae",
-        fullName: "Family Siphoviridae (Long Non-Contractile Tailed Phages)",
-        phonetic: "/ˌsɪf.oʊˈvɪr.ɪ.diː/",
-        pos: "病毒形态科 (n.)",
-        category: "🧫 细菌与噬菌体分类命名",
-        definition: "长尾噬菌体科 (非收缩长尾)。具有长而柔软但不可收缩的尾部结构（以 Lambda $\lambda$ 噬菌体为代表）。",
-        examples: [
-          {
-            en: "Non-contractile F-type pyocins evolved independently from Siphoviridae phage tails.",
-            cn: "非收缩性 F 型绿脓菌素是从长尾噬菌体的尾部结构独立演化而来的。",
-            source: "Journal of Virology"
-          }
-        ]
+            "id": "def_05",
+            "word": "O-antigen",
+            "fullName": "Lipopolysaccharide O-Antigen Polysaccharide",
+            "phonetic": "/oʊ ˈæn.tɪ.dʒən/",
+            "pos": "表面受体 (n.)",
+            "category": "⚔️ 宿主-病毒军备竞赛",
+            "definition": "O-抗原 / 脂多糖特异性多糖。革兰氏阴性菌外膜最外层的高度可变糖链，是噬菌体尾丝及尾素识别结合的主要初级靶标受体。",
+            "examples": [
+                  {
+                        "en": "Loss of the long O-antigen chain renders bacteria resistant to tailocin puncture at a severe fitness cost.",
+                        "cn": "长 O-抗原糖链的缺失使细菌对尾素穿刺产生抗性，但伴随着严重的生存适应度代价。",
+                        "source": "Science 2024 (Backman et al.)"
+                  }
+            ]
       },
       {
-        id: "tax_04",
-        word: "Podoviridae",
-        fullName: "Family Podoviridae (Short Tailed Phages)",
-        phonetic: "/ˌpoʊ.doʊˈvɪr.ɪ.diː/",
-        pos: "病毒形态科 (n.)",
-        category: "🧫 细菌与噬菌体分类命名",
-        definition: "短尾噬菌体科。仅具有极短且不可收缩的短小尾部结构（以 T7 噬菌体为代表）。",
-        examples: [
-          {
-            en: "Podoviridae phages inject their DNA using an internal core complex rather than a long tail tube.",
-            cn: "短尾噬菌体利用内部核心蛋白复合体而非长尾管来注入病毒 DNA。",
-            source: "Virology Textbook"
-          }
-        ]
-      },
-
-      // 🛡️ 9. ESKAPE 超级耐药菌与核心宿主 (ESKAPE Pathogens & Key Hosts)
-      {
-        id: "esk_01",
-        word: "ESKAPE",
-        fullName: "ESKAPE Pathogens (Multi-Drug Resistant Superbugs)",
-        phonetic: "/ɪˈskeɪp/",
-        pos: "菌群统称 (n.)",
-        category: "🛡️ ESKAPE 超级耐药菌与核心宿主",
-        definition: "ESKAPE 超级耐药致病菌群。首字母分别代表 6 种能‘逃逸’传统抗生素杀伤的顶级临床与环境超级细菌（Enterococcus, Staphylococcus, Klebsiella, Acinetobacter, Pseudomonas, Enterobacter），也是噬菌体疗法（Phage Therapy）全球重点攻关靶标。",
-        examples: [
-          {
-            en: "Phage cocktails are being developed worldwide to combat multidrug-resistant ESKAPE pathogens.",
-            cn: "全球正在加紧研发噬菌体鸡尾酒制剂，以对抗多重耐药的 ESKAPE 超级致病菌群。",
-            source: "Nature Microbiology 综述"
-          }
-        ]
+            "id": "def_06",
+            "word": "Anti-CRISPR",
+            "fullName": "Anti-CRISPR Proteins (Acr)",
+            "phonetic": "/ˌæn.ti ˈkrɪs.pər/",
+            "pos": "免疫抑制蛋白 (n.)",
+            "category": "⚔️ 宿主-病毒军备竞赛",
+            "definition": "抗 CRISPR 蛋白 (Acr)。噬菌体编码的小分子抑制蛋白，通过空间位阻直接结合 Cas 核酸酶或阻断 sgRNA-靶 DNA 配对，彻底瘫痪细菌的 CRISPR-Cas 获得性免疫。",
+            "examples": [
+                  {
+                        "en": "Acr proteins physically occlude the PAM-interacting cleft of Cas9, neutralizing host adaptive defense.",
+                        "cn": "Acr 蛋白在空间上物理阻断 Cas9 的 PAM 识别裂口，从而中和宿主的获得性免疫防御。",
+                        "source": "Nature Reviews Molecular Cell Biology"
+                  }
+            ]
       },
       {
-        id: "esk_02",
-        word: "Enterococcus faecium",
-        fullName: "Enterococcus faecium (E in ESKAPE)",
-        phonetic: "/ˌɛn.tə.roʊˈkɒk.əs ˈfiː.si.əm/",
-        pos: "革兰氏阳性菌 (n.)",
-        category: "🛡️ ESKAPE 超级耐药菌与核心宿主",
-        definition: "屎肠球菌 (ESKAPE 中的 E)。常驻肠道但可引起严重院内感染，其万古霉素耐药株 (VRE) 是临床噬菌体溶素与噬菌体治疗的重点攻坚对象。",
-        examples: [
-          {
-            en: "Vancomycin-resistant Enterococcus faecium (VRE) outbreaks represent a major hospital infection challenge.",
-            cn: "万古霉素耐药屎肠球菌 (VRE) 的暴发是院内感染防治的重大挑战。",
-            source: "Lancet Infectious Diseases"
-          }
-        ]
+            "id": "def_07",
+            "word": "Restriction-Modification",
+            "fullName": "Restriction-Modification System (R-M System)",
+            "phonetic": "/rɪˈstrɪk.ʃən ˌmɒd.ɪ.fɪˈkeɪ.ʃən/",
+            "pos": "天然免疫 (n.)",
+            "category": "⚔️ 宿主-病毒军备竞赛",
+            "definition": "限制-修饰系统 (R-M)。细菌最经典的原始免疫屏障，利用限制性内切酶（REase）剪切外源未甲基化病毒 DNA，同时利用甲基转移酶（MTase）保护自身染色体。",
+            "examples": [
+                  {
+                        "en": "Phages evade the bacterial Type II R-M system by encoding their own DNA methyltransferases.",
+                        "cn": "噬菌体通过自身编码 DNA 甲基转移酶，使其基因组甲基化从而逃逸细菌 II 型 R-M 系统的切割。",
+                        "source": "Nature 2026 Phage Papers"
+                  }
+            ]
       },
       {
-        id: "esk_03",
-        word: "Staphylococcus aureus",
-        fullName: "Staphylococcus aureus (S in ESKAPE)",
-        phonetic: "/ˌstæf.ɪ.loʊˈkɒk.əs ˈɔː.ri.əs/",
-        pos: "革兰氏阳性菌 (n.)",
-        category: "🛡️ ESKAPE 超级耐药菌与核心宿主",
-        definition: "金黄色葡萄球菌 (ESKAPE 中的 S)。耐甲氧西林金黄色葡萄球菌 (MRSA) 广泛耐药，其肌尾噬菌体（如 Kayvirus）及内溶素（Endolysin）已被开发为抗菌生物药物。",
-        examples: [
-          {
-            en: "Bacteriophage lysins demonstrate rapid bactericidal activity against biofilm-forming MRSA Staphylococcus aureus.",
-            cn: "噬菌体内溶素对形成生物膜的 MRSA 金黄色葡萄球菌表现出快速强效的杀菌活性。",
-            source: "Antimicrobial Agents and Chemotherapy"
-          }
-        ]
+            "id": "def_08",
+            "word": "Thoeris",
+            "fullName": "Thoeris Antiphage Defense System (ThsA/ThsB)",
+            "phonetic": "/ˈθoʊ.ər.ɪs/",
+            "pos": "免疫系统 (n.)",
+            "category": "⚔️ 宿主-病毒军备竞赛",
+            "definition": "Thoeris 防御系统。细菌通过传感蛋白 ThsB 感知噬菌体侵染并合成环状环磷酸腺苷衍生信号分子（cADPR），激活效应器 ThsA 大量消耗 NAD⁺ 诱导细胞休眠。",
+            "examples": [
+                  {
+                        "en": "The Thoeris system responds to phage infection by synthesizing cyclic signaling nucleotides that activate NAD+ depletion.",
+                        "cn": "Thoeris 系统通过合成环状核苷酸信号分子响应噬菌体侵染，激活细胞内 NAD+ 耗竭。",
+                        "source": "Nature 噬菌体防御专题"
+                  }
+            ]
       },
       {
-        id: "esk_04",
-        word: "Klebsiella pneumoniae",
-        fullName: "Klebsiella pneumoniae (K in ESKAPE)",
-        phonetic: "/ˌklɛb.siˈɛl.ə njuːˈmoʊ.ni.aɪ/",
-        pos: "革兰氏阴性菌 (n.)",
-        category: "🛡️ ESKAPE 超级耐药菌与核心宿主",
-        definition: "肺炎克雷伯菌 (ESKAPE 中的 K)。具有极厚的荚膜多糖（CPS），耐碳青霉烯类 (CRKP) 极难治疗；侵染它的噬菌体常进化出高效的多糖解聚酶（产生典型 Halo 光晕）。",
-        examples: [
-          {
-            en: "Phage tailspike depolymerases strip the thick protective capsule of carbapenem-resistant Klebsiella pneumoniae.",
-            cn: "噬菌体尾刺解聚酶能剥除耐碳青霉烯肺炎克雷伯菌致密的保护性荚膜。",
-            source: "Cell Host & Microbe"
-          }
-        ]
+            "id": "bio_01",
+            "word": "vOTU",
+            "fullName": "Viral Operational Taxonomic Unit",
+            "phonetic": "/viː ˈoʊ.tiː.juː/",
+            "pos": "计算分类单元 (n.)",
+            "category": "🧬 宏病毒组与生物信息",
+            "definition": "病毒操作分类单元。通常以 95% 核酸相似度及 85% 对齐覆盖度聚类得到的未培养病毒‘物种级’计算单元。",
+            "examples": [
+                  {
+                        "en": "We assembled 3,060 vOTUs from reclaimed water, of which 77.4% met the novel-genus criterion.",
+                        "cn": "我们从再生水中组装获得了 3,060 个 vOTUs，其中 77.4% 符合新属界定标准。",
+                        "source": "RecWaterVirome 核心数据 (Slide 1)"
+                  }
+            ]
       },
       {
-        id: "esk_05",
-        word: "Acinetobacter baumannii",
-        fullName: "Acinetobacter baumannii (A in ESKAPE)",
-        phonetic: "/əˌsɪn.ɪ.toʊˈbæk.tər baʊˈmæn.i.aɪ/",
-        pos: "革兰氏阴性菌 (n.)",
-        category: "🛡️ ESKAPE 超级耐药菌与核心宿主",
-        definition: "鲍曼不动杆菌 (ESKAPE 中的 A)。ICU 病房头号全耐药‘超级细菌’(CRAB)，环境耐受力极强；是全球首例成功实施个性化静脉注射噬菌体鸡尾酒同情救治的靶标细菌。",
-        examples: [
-          {
-            en: "Intravenous phage cocktail therapy successfully cured a systemic multidrug-resistant Acinetobacter baumannii infection.",
-            cn: "静脉注射噬菌体鸡尾酒疗法成功治愈了一例全身播散性多重耐药鲍曼不动杆菌感染。",
-            source: "Science Translational Medicine 经典临床案例"
-          }
-        ]
+            "id": "bio_02",
+            "word": "AMG",
+            "fullName": "Auxiliary Metabolic Gene",
+            "phonetic": "/ˌeɪ.ɛmˈdʒiː/",
+            "pos": "功能基因 (n.)",
+            "category": "🧬 宏病毒组与生物信息",
+            "definition": "辅助代谢基因。噬菌体从宿主基因组中捕获并保留的代谢酶基因，用于在侵染期强行重编程宿主的能量与物质代谢。",
+            "examples": [
+                  {
+                        "en": "AMGs maintain critical metabolic fluxes during infection when the host's native genome is degraded.",
+                        "cn": "在宿主自身基因组被降解后，AMG 维持了侵染期间关键的代谢通量。",
+                        "source": "Nature Reviews Microbiology"
+                  }
+            ]
       },
       {
-        id: "esk_06",
-        word: "Pseudomonas aeruginosa",
-        fullName: "Pseudomonas aeruginosa (P in ESKAPE)",
-        phonetic: "/ˌsuː.doʊˈmoʊ.nəs əˌrʊdʒ.ɪˈnoʊ.sə/",
-        pos: "革兰氏阴性菌 (n.)",
-        category: "🛡️ ESKAPE 超级耐药菌与核心宿主",
-        definition: "铜绿假单胞菌 / 绿脓杆菌 (ESKAPE 中的 P)。囊性纤维化 (CF) 肺部和烧伤创面的主要病原体，能分泌绿脓菌素 (Pyocin / 尾素) 并在藻酸盐生物膜中定植。",
-        examples: [
-          {
-            en: "Pseudomonas aeruginosa utilizes contractile R-pyocins to outcompete closely related strains in cystic fibrosis lungs.",
-            cn: "铜绿假单胞菌利用收缩性 R 型绿脓菌素（尾素）在囊性纤维化肺部击败亲缘竞争菌株。",
-            source: "ISME Journal"
-          }
-        ]
+            "id": "bio_03",
+            "word": "Coverage Masking",
+            "fullName": "Breadth of Horizontal Coverage Masking",
+            "phonetic": "/ˈkʌv.ər.ɪdʒ ˈmæsk.ɪŋ/",
+            "pos": "质控算法 (n.)",
+            "category": "🧬 宏病毒组与生物信息",
+            "definition": "覆盖度掩码过滤。要求比对 Reads 必须覆盖病毒 Contig 全长的 70% 以上，防止局部保守片段虚假比对导致假阳性计数。",
+            "examples": [
+                  {
+                        "en": "Coverage masking filtered 1,675 count-positive vOTUs down to 60 high-confidence detections in gc1.",
+                        "cn": "覆盖度掩码在 gc1 样本中将 1,675 个计数阳性 vOTU 严格过滤为 60 个高置信度检出。",
+                        "source": "RecWaterVirome 质控质询 (Slide 4)"
+                  }
+            ]
       },
       {
-        id: "esk_07",
-        word: "Enterobacter cloacae",
-        fullName: "Enterobacter cloacae complex (E in ESKAPE)",
-        phonetic: "/ˌɛn.tə.roʊˈbæk.tər kloʊˈeɪ.siː/",
-        pos: "革兰氏阴性菌 (n.)",
-        category: "🛡️ ESKAPE 超级耐药菌与核心宿主",
-        definition: "阴沟肠杆菌复合群 (ESKAPE 的第二个 E)。院内获得性败血症与尿路感染常见菌，常高产染色体 AmpC 头孢菌素酶而逃逸广谱抗生素。",
-        examples: [
-          {
-            en: "Carbapenemase-producing Enterobacter cloacae exhibits high resistance profiles across hospital ICUs.",
-            cn: "产碳青霉烯酶阴沟肠杆菌在医院重症监护病房中表现出极高的泛耐药特征。",
-            source: "Journal of Antimicrobial Chemotherapy"
-          }
-        ]
+            "id": "bio_04",
+            "word": "Rarefaction",
+            "fullName": "Random Subsampling / Rarefaction Normalization",
+            "phonetic": "/ˌrɛr.ɪˈfæk.ʃən/",
+            "pos": "标准化方法 (n.)",
+            "category": "🧬 宏病毒组与生物信息",
+            "definition": "稀疏抽平法。将所有样本的测序 Reads 随机无放回重抽样到相同的最低测序深度，消除因文库大小悬殊导致的多样性伪差异。",
+            "examples": [
+                  {
+                        "en": "Alpha diversity was calculated after rarefaction to the lowest sequencing depth of 1.65 million reads.",
+                        "cn": "在随机抽平至最低测序深度 165 万 reads 后，计算了各样本的 Alpha 多样性。",
+                        "source": "导师质询重点解答 (Slide 4 & 7)"
+                  }
+            ]
       },
       {
-        id: "esk_08",
-        word: "Escherichia coli",
-        fullName: "Escherichia coli (including Adherent-Invasive AIEC)",
-        phonetic: "/ˌɛʃ.əˈrɪk.i.ə ˈkoʊ.laɪ/",
-        pos: "模式宿主菌 (n.)",
-        category: "🛡️ ESKAPE 超级耐药菌与核心宿主",
-        definition: "大肠埃希氏菌 / 大肠杆菌。噬菌体学研究的‘终极模式宿主’（T4, T7, $\lambda$ 经典宿主）；同时其致病亚型如贴附侵袭性大肠杆菌 (AIEC) 是克罗恩病等肠道炎症的驱动菌。",
-        examples: [
-          {
-            en: "AIEC Escherichia coli strains adhere to and invade intestinal epithelial cells in Crohn's disease patients.",
-            cn: "AIEC 贴附侵袭性大肠杆菌菌株在克罗恩病患者体内能够粘附并侵入肠上皮细胞。",
-            source: "Gastroenterology / 组会课题关注"
-          }
-        ]
+            "id": "bio_05",
+            "word": "Simpson's Paradox",
+            "fullName": "Simpson's Reversal Paradox (Confounding Bias)",
+            "phonetic": "/ˈsɪmp.sənz ˈpær.ə.dɑːks/",
+            "pos": "统计悖论 (n.)",
+            "category": "🧬 宏病毒组与生物信息",
+            "definition": "辛普森悖论。当混杂因素（如序列长度与完整度）未被控制时，整体数据呈现的表面规律与真实分层规律完全矛盾的统计学假象。",
+            "examples": [
+                  {
+                        "en": "The apparent virulence factor enrichment in temperate phages was an artifact of Simpson's paradox driven by contig length.",
+                        "cn": "温和噬菌体表面上的毒力基因富集，是由于序列长度差异驱动的辛普森悖论假象。",
+                        "source": "导师严厉点评 (Slide 17)"
+                  }
+            ]
       },
       {
-        id: "esk_09",
-        word: "Helicobacter pylori",
-        fullName: "Helicobacter pylori (Gastric Pathogen)",
-        phonetic: "/ˌhɛl.ɪ.koʊˈbæk.tər paɪˈlɔːr.aɪ/",
-        pos: "微需氧菌 (n.)",
-        category: "🛡️ ESKAPE 超级耐药菌与核心宿主",
-        definition: "幽门螺杆菌。定植于胃黏膜耐受强酸的微需氧螺旋状细菌，是胃炎、消化性溃疡与胃癌的一类致癌原，目前三联/四联抗生素耐药率激增，亟需新型噬菌体防控策略。",
-        examples: [
-          {
-            en: "Helicobacter pylori colonization disrupts the gastric epithelial barrier through CagA and VacA virulence factors.",
-            cn: "幽门螺杆菌通过 CagA 和 VacA 毒力因子破坏胃上皮细胞屏障。",
-            source: "Nature Reviews Gastroenterology / 组会讨论"
-          }
-        ]
+            "id": "bio_06",
+            "word": "CheckV",
+            "fullName": "CheckV Virome Quality & Completeness Pipeline",
+            "phonetic": "/tʃɛk viː/",
+            "pos": "生信工具 (n.)",
+            "category": "🧬 宏病毒组与生物信息",
+            "definition": "CheckV 质量评估软件。通过检测末端重复序列 (DTR)、前噬菌体整合位点及保守病毒标志物，评估组装病毒 Contig 的完整度（Complete, High/Medium/Low-quality）与宿主污染区段。",
+            "examples": [
+                  {
+                        "en": "vOTU0052 was identified as a high-quality viral contig with 88.84% completeness evaluated by CheckV.",
+                        "cn": "经 CheckV 评估，vOTU0052 被鉴定为具有 88.84% 基因组完整度的高质量病毒 Contig。",
+                        "source": "RecWaterVirome 候选基因组 (Slide 12)"
+                  }
+            ]
       },
       {
-        id: "esk_10",
-        word: "Pseudomonas viridiflava",
-        fullName: "Pseudomonas viridiflava (Plant Pathogen / Science Model)",
-        phonetic: "/ˌsuː.doʊˈmoʊ.nəs ˌvɪr.ɪ.dɪˈflɑː.və/",
-        pos: "植物病原菌 (n.)",
-        category: "🛡️ ESKAPE 超级耐药菌与核心宿主",
-        definition: "绿色假单胞菌。侵染野生拟南芥等植物叶片的泛寄生致病菌；是 2024 年 Science 论文中证明菌株利用尾素（Tailocins）互相刺杀以维持 170 年‘剪刀石头布’微观平衡的关键模式菌。",
-        examples: [
-          {
-            en: "Pseudomonas viridiflava strains maintain long-term coexistence on Arabidopsis leaves via tailocin-receptor polymorphism.",
-            cn: "绿色假单胞菌菌株通过尾素与受体的多态性匹配，在拟南芥叶片上维持了长期的多菌株共存。",
-            source: "Science 2024 (Gong Yuhang 汇报文献)"
-          }
-        ]
+            "id": "bio_07",
+            "word": "iPHoP",
+            "fullName": "Integrated Phage-Host Prediction Pipeline",
+            "phonetic": "/aɪ ˈpiː.hɑːp/",
+            "pos": "生信工具 (n.)",
+            "category": "🧬 宏病毒组与生物信息",
+            "definition": "iPHoP 噬菌体宿主预测平台。整合 CRISPR spacer 匹配、原噬菌体序列对齐、寡核苷酸频率（k-mer）和机器学习，对未培养宏病毒组进行高置信度宿主属水平预测。",
+            "examples": [
+                  {
+                        "en": "iPHoP assigned putative bacterial host genera to 200 vOTUs with a confidence score ≥ 90.",
+                        "cn": "iPHoP 以 ≥90 的高置信度评分为 200 个 vOTU 预测了潜在的细菌宿主属。",
+                        "source": "RecWaterVirome 宿主连接 (Slide 9)"
+                  }
+            ]
+      },
+      {
+            "id": "met_01",
+            "word": "NAMPT",
+            "fullName": "Nicotinamide Phosphoribosyltransferase (nadV)",
+            "phonetic": "/ˈnæmpt/",
+            "pos": "限速酶 (n.)",
+            "category": "🧪 核心代谢与重要基因",
+            "definition": "烟酰胺磷酸核糖转移酶。催化烟酰胺 (NAM) + PRPP 生成烟酰胺单核苷酸 (NMN)，为 NAD 拯救合成途径的第一步限速酶。",
+            "examples": [
+                  {
+                        "en": "Phage NAMPT enzymes clustered tightly with canonical NadV rather than the bacterial PncB clade.",
+                        "cn": "噬菌体 NAMPT 酶在进化树上紧密聚类在标准 NadV 分支，而非细菌 PncB 分支。",
+                        "source": "Pan Cunli 进化树分析 (Slide 15)"
+                  }
+            ]
+      },
+      {
+            "id": "met_02",
+            "word": "nadM",
+            "fullName": "Nicotinamide Mononucleotide Adenylyltransferase (NMNAT)",
+            "phonetic": "/ˌɛn.eɪ.diː ˈɛm/",
+            "pos": "关键酶 (n.)",
+            "category": "🧪 核心代谢与重要基因",
+            "definition": "烟酰胺单核苷酸腺苷酰转移酶。催化 NMN + ATP 生成最终辅酶 NAD⁺，与 NAMPT 串联构成致密的双酶微循环。",
+            "examples": [
+                  {
+                        "en": "Six vOTUs carry a compact operon-like module containing nadM and NAMPT on the same strand.",
+                        "cn": "6 个 vOTUs 在同链同向转录单元中携带了包含 nadM 与 NAMPT 的致密操纵子样模块。",
+                        "source": "RecWaterVirome 核心发现 (Slide 11)"
+                  }
+            ]
+      },
+      {
+            "id": "met_03",
+            "word": "folA",
+            "fullName": "Dihydrofolate Reductase (DHFR / Folate Biosynthesis)",
+            "phonetic": "/ˈfoʊl.eɪ/",
+            "pos": "辅酶代谢 (n.)",
+            "category": "🧪 核心代谢与重要基因",
+            "definition": "二氢叶酸还原酶 (叶酸生物合成途径关键酶)。提供单碳单位转移，专用于噬菌体爆发期大量合成胸腺嘧啶与嘌呤核苷酸。",
+            "examples": [
+                  {
+                        "en": "folA was identified as a recurrent AMG across multiple reclaimed water viromes.",
+                        "cn": "folA 被鉴定为在多个再生水宏病毒组中重复保守出现的辅助代谢基因。",
+                        "source": "AMG 筛选热图 (Slide 10)"
+                  }
+            ]
+      },
+      {
+            "id": "met_04",
+            "word": "Queuosine",
+            "fullName": "Queuosine tRNA Hypermodification Pathway (queC/queD/queE)",
+            "phonetic": "/kjuːˈoʊ.siːn/",
+            "pos": "tRNA修饰 (n.)",
+            "category": "🧪 核心代谢与重要基因",
+            "definition": "古细菌素 / 辫嘌呤核苷 (Queuosine)。噬菌体编码的 tRNA 摇摆位超修饰通路，精准调控翻译保真度并逃逸宿主核酸内切酶对噬菌体转录本的识别降解。",
+            "examples": [
+                  {
+                        "en": "Phage-encoded queuosine biosynthesis enzymes modify viral tRNAs to optimize translational efficiency in nutrient-deprived hosts.",
+                        "cn": "噬菌体编码的 Queuosine 合成酶修饰病毒 tRNA，以优化其在贫营养宿主中的翻译效率。",
+                        "source": "Nature 2026 课题组重点关注方向 (Slide 19)"
+                  }
+            ]
+      },
+      {
+            "id": "met_05",
+            "word": "DNMT",
+            "fullName": "DNA Methyltransferase (DNA Methylation AMG)",
+            "phonetic": "/ˌdiː.ɛn.ɛmˈtiː/",
+            "pos": "修饰酶 (n.)",
+            "category": "🧪 核心代谢与重要基因",
+            "definition": "DNA 甲基转移酶。将 S-腺苷甲硫氨酸 (SAM) 的甲基转移至腺嘌呤或胞嘧啶，特异性封闭宿主限制性内切酶的识别位点，实现表观遗传免疫逃逸。",
+            "examples": [
+                  {
+                        "en": "DNMT1 and DNMT3A AMGs mediate extensive epigenetic methylation of viral genomes against restriction.",
+                        "cn": "DNMT1 和 DNMT3A 辅助代谢基因介导了病毒基因组的广泛表观遗传甲基化以抵抗限制酶切割。",
+                        "source": "RecWaterVirome 代谢筛选 (Slide 10)"
+                  }
+            ]
+      },
+      {
+            "id": "esk_01",
+            "word": "ESKAPE",
+            "fullName": "ESKAPE Pathogens (Multi-Drug Resistant Superbugs)",
+            "phonetic": "/ɪˈskeɪp/",
+            "pos": "菌群统称 (n.)",
+            "category": "🛡️ ESKAPE 超级耐药菌与核心宿主",
+            "definition": "ESKAPE 超级耐药致病菌群。首字母代表 6 种能‘逃逸’传统抗生素杀伤的顶级临床超级细菌（Enterococcus, Staphylococcus, Klebsiella, Acinetobacter, Pseudomonas, Enterobacter），为噬菌体疗法全球攻坚重点。",
+            "examples": [
+                  {
+                        "en": "Phage cocktails are being developed worldwide to combat multidrug-resistant ESKAPE pathogens.",
+                        "cn": "全球正在加紧研发噬菌体鸡尾酒制剂，以对抗多重耐药的 ESKAPE 超级致病菌群。",
+                        "source": "Nature Microbiology 综述"
+                  }
+            ]
+      },
+      {
+            "id": "esk_02",
+            "word": "Enterococcus faecium",
+            "fullName": "Enterococcus faecium (E in ESKAPE)",
+            "phonetic": "/ˌɛn.tə.roʊˈkɒk.əs ˈfiː.si.əm/",
+            "pos": "革兰氏阳性菌 (n.)",
+            "category": "🛡️ ESKAPE 超级耐药菌与核心宿主",
+            "definition": "屎肠球菌 (ESKAPE 中的 E)。常驻肠道但可引起严重院内感染，其万古霉素耐药株 (VRE) 是临床噬菌体治疗的重点攻坚对象。",
+            "examples": [
+                  {
+                        "en": "Vancomycin-resistant Enterococcus faecium (VRE) outbreaks represent a major hospital infection challenge.",
+                        "cn": "万古霉素耐药屎肠球菌 (VRE) 的暴发是院内感染防治的重大挑战。",
+                        "source": "Lancet Infectious Diseases"
+                  }
+            ]
+      },
+      {
+            "id": "esk_03",
+            "word": "Staphylococcus aureus",
+            "fullName": "Staphylococcus aureus (S in ESKAPE)",
+            "phonetic": "/ˌstæf.ɪ.loʊˈkɒk.əs ˈɔː.ri.əs/",
+            "pos": "革兰氏阳性菌 (n.)",
+            "category": "🛡️ ESKAPE 超级耐药菌与核心宿主",
+            "definition": "金黄色葡萄球菌 (ESKAPE 中的 S)。耐甲氧西林金黄色葡萄球菌 (MRSA) 广泛耐药，其肌尾噬菌体及内溶素已被开发为抗菌生物药物。",
+            "examples": [
+                  {
+                        "en": "Bacteriophage lysins demonstrate rapid bactericidal activity against biofilm-forming MRSA Staphylococcus aureus.",
+                        "cn": "噬菌体内溶素对形成生物膜的 MRSA 金黄色葡萄球菌表现出快速强效的杀菌活性。",
+                        "source": "Antimicrobial Agents and Chemotherapy"
+                  }
+            ]
+      },
+      {
+            "id": "esk_04",
+            "word": "Klebsiella pneumoniae",
+            "fullName": "Klebsiella pneumoniae (K in ESKAPE)",
+            "phonetic": "/ˌklɛb.siˈɛl.ə njuːˈmoʊ.ni.aɪ/",
+            "pos": "革兰氏阴性菌 (n.)",
+            "category": "🛡️ ESKAPE 超级耐药菌与核心宿主",
+            "definition": "肺炎克雷伯菌 (ESKAPE 中的 K)。具有极厚的荚膜多糖（CPS），耐碳青霉烯类 (CRKP) 极难治疗；侵染它的噬菌体常进化出高效多糖解聚酶（产生典型 Halo 光晕）。",
+            "examples": [
+                  {
+                        "en": "Phage tailspike depolymerases strip the thick protective capsule of carbapenem-resistant Klebsiella pneumoniae.",
+                        "cn": "噬菌体尾刺解聚酶能剥除耐碳青霉烯肺炎克雷伯菌致密的保护性荚膜。",
+                        "source": "Cell Host & Microbe"
+                  }
+            ]
+      },
+      {
+            "id": "esk_05",
+            "word": "Acinetobacter baumannii",
+            "fullName": "Acinetobacter baumannii (A in ESKAPE)",
+            "phonetic": "/əˌsɪn.ɪ.toʊˈbæk.tər baʊˈmæn.i.aɪ/",
+            "pos": "革兰氏阴性菌 (n.)",
+            "category": "🛡️ ESKAPE 超级耐药菌与核心宿主",
+            "definition": "鲍曼不动杆菌 (ESKAPE 中的 A)。ICU 病房头号全耐药‘超级细菌’(CRAB)，是全球首例成功实施个性化静脉注射噬菌体鸡尾酒救治的靶标细菌。",
+            "examples": [
+                  {
+                        "en": "Intravenous phage cocktail therapy successfully cured a systemic multidrug-resistant Acinetobacter baumannii infection.",
+                        "cn": "静脉注射噬菌体鸡尾酒疗法成功治愈了一例全身播散性多重耐药鲍曼不动杆菌感染。",
+                        "source": "Science Translational Medicine 经典临床案例"
+                  }
+            ]
+      },
+      {
+            "id": "esk_06",
+            "word": "Pseudomonas aeruginosa",
+            "fullName": "Pseudomonas aeruginosa (P in ESKAPE)",
+            "phonetic": "/ˌsuː.doʊˈmoʊ.nəs əˌrʊdʒ.ɪˈnoʊ.sə/",
+            "pos": "革兰氏阴性菌 (n.)",
+            "category": "🛡️ ESKAPE 超级耐药菌与核心宿主",
+            "definition": "铜绿假单胞菌 / 绿脓杆菌 (ESKAPE 中的 P)。囊性纤维化 (CF) 肺部主要病原体，能分泌绿脓菌素 (Pyocin / 尾素) 并在藻酸盐生物膜中定植。",
+            "examples": [
+                  {
+                        "en": "Pseudomonas aeruginosa utilizes contractile R-pyocins to outcompete closely related strains in cystic fibrosis lungs.",
+                        "cn": "铜绿假单胞菌利用收缩性 R 型绿脓菌素（尾素）在囊性纤维化肺部击败亲缘竞争菌株。",
+                        "source": "ISME Journal"
+                  }
+            ]
+      },
+      {
+            "id": "esk_07",
+            "word": "Enterobacter cloacae",
+            "fullName": "Enterobacter cloacae complex (E in ESKAPE)",
+            "phonetic": "/ˌɛn.tə.roʊˈbæk.tər kloʊˈeɪ.siː/",
+            "pos": "革兰氏阴性菌 (n.)",
+            "category": "🛡️ ESKAPE 超级耐药菌与核心宿主",
+            "definition": "阴沟肠杆菌复合群 (ESKAPE 的第二个 E)。院内获得性败血症与尿路感染常见菌，常高产染色体 AmpC 头孢菌素酶而逃逸广谱抗生素。",
+            "examples": [
+                  {
+                        "en": "Carbapenemase-producing Enterobacter cloacae exhibits high resistance profiles across hospital ICUs.",
+                        "cn": "产碳青霉烯酶阴沟肠杆菌在医院重症监护病房中表现出极高的泛耐药特征。",
+                        "source": "Journal of Antimicrobial Chemotherapy"
+                  }
+            ]
+      },
+      {
+            "id": "esk_08",
+            "word": "Escherichia coli",
+            "fullName": "Escherichia coli (including Adherent-Invasive AIEC)",
+            "phonetic": "/ˌɛʃ.əˈrɪk.i.ə ˈkoʊ.laɪ/",
+            "pos": "模式宿主菌 (n.)",
+            "category": "🛡️ ESKAPE 超级耐药菌与核心宿主",
+            "definition": "大肠埃希氏菌 / 大肠杆菌。噬菌体学研究的‘终极模式宿主’（T4, T7, $\lambda$ 经典宿主）；同时其致病亚型如贴附侵袭性大肠杆菌 (AIEC) 是克罗恩病等肠道炎症的驱动菌。",
+            "examples": [
+                  {
+                        "en": "AIEC Escherichia coli strains adhere to and invade intestinal epithelial cells in Crohn's disease patients.",
+                        "cn": "AIEC 贴附侵袭性大肠杆菌菌株在克罗恩病患者体内能够粘附并侵入肠上皮细胞。",
+                        "source": "Gastroenterology / 组会课题关注"
+                  }
+            ]
+      },
+      {
+            "id": "esk_09",
+            "word": "Helicobacter pylori",
+            "fullName": "Helicobacter pylori (Gastric Pathogen)",
+            "phonetic": "/ˌhɛl.ɪ.koʊˈbæk.tər paɪˈlɔːr.aɪ/",
+            "pos": "微需氧菌 (n.)",
+            "category": "🛡️ ESKAPE 超级耐药菌与核心宿主",
+            "definition": "幽门螺杆菌。定植于胃黏膜耐受强酸的微需氧螺旋状细菌，是胃炎与胃癌的一类致癌原，目前三联/四联抗生素耐药率激增，亟需新型噬菌体防控策略。",
+            "examples": [
+                  {
+                        "en": "Helicobacter pylori colonization disrupts the gastric epithelial barrier through CagA and VacA virulence factors.",
+                        "cn": "幽门螺杆菌通过 CagA 和 VacA 毒力因子破坏胃上皮细胞屏障。",
+                        "source": "Nature Reviews Gastroenterology / 组会讨论"
+                  }
+            ]
+      },
+      {
+            "id": "esk_10",
+            "word": "Pseudomonas viridiflava",
+            "fullName": "Pseudomonas viridiflava (Plant Pathogen / Science Model)",
+            "phonetic": "/ˌsuː.doʊˈmoʊ.nəs ˌvɪr.ɪ.dɪˈflɑː.və/",
+            "pos": "植物病原菌 (n.)",
+            "category": "🛡️ ESKAPE 超级耐药菌与核心宿主",
+            "definition": "绿色假单胞菌。侵染拟南芥等植物叶片的泛寄生致病菌；为 2024 年 Science 论文中证明菌株利用尾素（Tailocins）互相刺杀以维持 170 年‘剪刀石头布’微观平衡的关键模式菌。",
+            "examples": [
+                  {
+                        "en": "Pseudomonas viridiflava strains maintain long-term coexistence on Arabidopsis leaves via tailocin-receptor polymorphism.",
+                        "cn": "绿色假单胞菌菌株通过尾素与受体的多态性匹配，在拟南芥叶片上维持了长期的多菌株共存。",
+                        "source": "Science 2024 (Gong Yuhang 汇报文献)"
+                  }
+            ]
+      },
+      {
+            "id": "esk_11",
+            "word": "Alcanivorax borkumensis",
+            "fullName": "Alcanivorax borkumensis (Hydrocarbonoclastic Oil-Degrading Bacterium)",
+            "phonetic": "/ælˌkæn.ɪˈvɔːr.æks ˌbɔːr.kʊˈmɛn.sɪs/",
+            "pos": "海洋嗜烃菌 (n.)",
+            "category": "🛡️ ESKAPE 超级耐药菌与核心宿主",
+            "definition": "博库姆阿尔坎氏菌 (专性烷烃降解菌)。海洋溢油污染生物修复的明星菌株，利用烷烃羟化酶（AlkB）高效降解直链烷烃，为 Project 1 石油降解课题核心菌株。",
+            "examples": [
+                  {
+                        "en": "Alcanivorax borkumensis rapidly blooms following marine oil spills, utilizing branched and linear alkanes as primary carbon sources.",
+                        "cn": "在海洋溢油事故后，博库姆阿尔坎氏菌迅速暴发性增殖，利用支链与直链烷烃作为主要碳源。",
+                        "source": "Project 1: Oil Degradation 核心课题"
+                  }
+            ]
+      },
+      {
+            "id": "tax_01",
+            "word": "Caudoviricetes",
+            "fullName": "Class Caudoviricetes (Tailed Double-Stranded DNA Bacteriophages)",
+            "phonetic": "/ˌkɔː.doʊ.vaɪˈrɪs.ɪ.tiːz/",
+            "pos": "病毒纲名 (n.)",
+            "category": "🧫 细菌与噬菌体分类命名",
+            "definition": "有尾噬菌体纲。ICTV 官方分类学纲名，统领所有具有双链 DNA (dsDNA) 与立体尾部结构的经典有尾噬菌体（占水体病毒 99% 以上）。",
+            "examples": [
+                  {
+                        "en": "Over 99% of our assembled viromes were classified into the class Caudoviricetes.",
+                        "cn": "我们组装获得的宏病毒组中有超过 99% 归属于有尾噬菌体纲。",
+                        "source": "RecWaterVirome 分类统计 (Slide 8)"
+                  }
+            ]
+      },
+      {
+            "id": "tax_02",
+            "word": "Myoviridae",
+            "fullName": "Family Myoviridae (Contractile Tailed Phages)",
+            "phonetic": "/ˌmaɪ.oʊˈvɪr.ɪ.diː/",
+            "pos": "病毒形态科 (n.)",
+            "category": "🧫 细菌与噬菌体分类命名",
+            "definition": "肌尾噬菌体科 (长肌尾)。具有长而刚硬且能够收缩的双层尾鞘结构（以 T4 噬菌体和尾素为代表）。",
+            "examples": [
+                  {
+                        "en": "Contractile R-type tailocins share direct morphological ancestry with Myoviridae phage tails.",
+                        "cn": "收缩性 R 型尾素与长肌尾噬菌体的尾部在形态学上共享直接的演化祖先来源。",
+                        "source": "PLoS Pathogens"
+                  }
+            ]
+      },
+      {
+            "id": "tax_03",
+            "word": "Siphoviridae",
+            "fullName": "Family Siphoviridae (Long Non-Contractile Tailed Phages)",
+            "phonetic": "/ˌsɪf.oʊˈvɪr.ɪ.diː/",
+            "pos": "病毒形态科 (n.)",
+            "category": "🧫 细菌与噬菌体分类命名",
+            "definition": "长尾噬菌体科 (非收缩长尾)。具有长而柔软但不可收缩的尾部结构（以 Lambda $\lambda$ 噬菌体为代表）。",
+            "examples": [
+                  {
+                        "en": "Non-contractile F-type pyocins evolved independently from Siphoviridae phage tails.",
+                        "cn": "非收缩性 F 型绿脓菌素是从长尾噬菌体的尾部结构独立演化而来的。",
+                        "source": "Journal of Virology"
+                  }
+            ]
+      },
+      {
+            "id": "tax_04",
+            "word": "Podoviridae",
+            "fullName": "Family Podoviridae (Short Tailed Phages)",
+            "phonetic": "/ˌpoʊ.doʊˈvɪr.ɪ.diː/",
+            "pos": "病毒形态科 (n.)",
+            "category": "🧫 细菌与噬菌体分类命名",
+            "definition": "短尾噬菌体科。仅具有极短且不可收缩的短小尾部结构（以 T7 噬菌体为代表）。",
+            "examples": [
+                  {
+                        "en": "Podoviridae phages inject their DNA using an internal core complex rather than a long tail tube.",
+                        "cn": "短尾噬菌体利用内部核心蛋白复合体而非长尾管来注入病毒 DNA。",
+                        "source": "Virology Textbook"
+                  }
+            ]
+      },
+      {
+            "id": "tax_05",
+            "word": "Lysogeny",
+            "fullName": "Lysogenic Cycle / Prophage Integration",
+            "phonetic": "/laɪˈsɒdʒ.ə.ni/",
+            "pos": "生活周期 (n.)",
+            "category": "🧫 细菌与噬菌体分类命名",
+            "definition": "溶原周期 / 溶原性。温和噬菌体将其基因组整合进宿主细菌染色体（成为前噬菌体 Prophage）并随宿主分裂同步复制，暂不裂解宿主的稳定共生状态。",
+            "examples": [
+                  {
+                        "en": "Lysogeny dominates in oligotrophic deep groundwater environments, conferring metabolic benefits to host bacteria.",
+                        "cn": "在贫营养深层地下水环境中，溶原状态占据主导地位，并为宿主细菌赋予代谢优势。",
+                        "source": "Nature Communications 2026 地下水病毒组"
+                  }
+            ]
+      },
+      {
+            "id": "tax_06",
+            "word": "Transduction",
+            "fullName": "Phage-Mediated Horizontal Gene Transduction",
+            "phonetic": "/trænzˈdʌk.ʃən/",
+            "pos": "基因转移 (n.)",
+            "category": "🧫 细菌与噬菌体分类命名",
+            "definition": "转导。噬菌体作为载体，将供体细菌的基因片段错误包装并在侵染时注入受体细菌，介导耐药基因与毒力因子跨菌株横向扩散的水平基因转移机制。",
+            "examples": [
+                  {
+                        "en": "Generalized transduction drives rapid dissemination of antibiotic resistance genes across wastewater communities.",
+                        "cn": "普遍性转导驱动了抗生素抗性基因在污水微生物群落中的快速扩散传播。",
+                        "source": "Nature Water 2026 水体耐药组"
+                  }
+            ]
+      },
+      {
+            "id": "v_01",
+            "word": "confer",
+            "fullName": "confer (conferred, conferring)",
+            "phonetic": "/kənˈfɜːr/",
+            "pos": "动词 v.",
+            "category": "🎯 顶级学术论文核心动词",
+            "definition": "赋予、带来 (通常指基因、突变或辅助代谢通路赋予细菌/病毒某种生存优势、抗性或表型)。",
+            "examples": [
+                  {
+                        "en": "This NAD salvage module confers enhanced reproductive fitness during host immunity activation.",
+                        "cn": "该 NAD 拯救模块在宿主免疫激活期间赋予噬菌体增强的繁殖适应度。",
+                        "source": "Nature Communications 经典句式"
+                  }
+            ]
+      },
+      {
+            "id": "v_02",
+            "word": "elucidate",
+            "fullName": "elucidate (elucidated, elucidating)",
+            "phonetic": "/ɪˈluː.sə.deɪt/",
+            "pos": "动词 v.",
+            "category": "🎯 顶级学术论文核心动词",
+            "definition": "阐明、揭示、搞清楚 (深入解释复杂的分子机制或生物学通路)。",
+            "examples": [
+                  {
+                        "en": "Future cryo-EM studies are required to elucidate the atomic details of baseplate triggering.",
+                        "cn": "未来需要冷冻电镜研究来阐明基板构象触发的原子级细节。",
+                        "source": "Science 2024 讨论部分"
+                  }
+            ]
+      },
+      {
+            "id": "v_03",
+            "word": "recapitulate",
+            "fullName": "recapitulate (recapitulated, recapitulating)",
+            "phonetic": "/ˌriː.kəˈpɪtʃ.ə.leɪt/",
+            "pos": "动词 v.",
+            "category": "🎯 顶级学术论文核心动词",
+            "definition": "重现、模拟 (在实验室体内或体外实验中成功重现自然界发生的现象)。",
+            "examples": [
+                  {
+                        "en": "Co-culture experiments in Planta recapitulated the competitive suppression observed in wild populations.",
+                        "cn": "植物体内的共培养实验成功重现了在野生种群中观察到的竞争抑制现象。",
+                        "source": "Science 2024 (Backman et al.)"
+                  }
+            ]
+      },
+      {
+            "id": "v_04",
+            "word": "abrogate",
+            "fullName": "abrogate (abrogated, abrogating)",
+            "phonetic": "/ˈæb.rə.ɡeɪt/",
+            "pos": "动词 v.",
+            "category": "🎯 顶级学术论文核心动词",
+            "definition": "彻底消除、废除 (指突变或化学抑制剂完全破坏某种生化功能或表型)。",
+            "examples": [
+                  {
+                        "en": "Point mutations in the catalytic triad completely abrogated the NADase enzymatic activity.",
+                        "cn": "催化三联体中的点突变彻底消除了其 NADase 酶促活性。",
+                        "source": "Cell 2021 (Ofir et al.)"
+                  }
+            ]
+      },
+      {
+            "id": "v_05",
+            "word": "disarm",
+            "fullName": "disarm (disarmed, disarming)",
+            "phonetic": "/dɪsˈɑːrm/",
+            "pos": "动词 v.",
+            "category": "🎯 顶级学术论文核心动词",
+            "definition": "解除武装、缴械 (在基因工程中特指敲除病原菌或噬菌体的毒力/毒针武器)。",
+            "examples": [
+                  {
+                        "en": "The disarmed mutant strain lacking tail fibers grew normally but lost competitive superiority.",
+                        "cn": "敲除尾丝基因的‘被缴械’突变株生长正常，但丧失了竞争抑制优势。",
+                        "source": "Science 2024 (Gong Yuhang 汇报文献)"
+                  }
+            ]
+      },
+      {
+            "id": "v_06",
+            "word": "corroborate",
+            "fullName": "corroborate (corroborated, corroborating)",
+            "phonetic": "/kəˈrɑː.bə.reɪt/",
+            "pos": "动词 v.",
+            "category": "🎯 顶级学术论文核心动词",
+            "definition": "佐证、证实 (用不同维度的多组实验数据相互印证同一科学假说)。",
+            "examples": [
+                  {
+                        "en": "The qPCR findings corroborated our metagenomic read coverage estimates across facilities.",
+                        "cn": "qPCR 定量结果有力佐证了我们在跨水厂宏基因组比对中得出的丰度估计值。",
+                        "source": "Nature Communications"
+                  }
+            ]
+      },
+      {
+            "id": "v_07",
+            "word": "mitigate",
+            "fullName": "mitigate (mitigated, mitigating)",
+            "phonetic": "/ˈmɪt.ɪ.ɡeɪt/",
+            "pos": "动词 v.",
+            "category": "🎯 顶级学术论文核心动词",
+            "definition": "缓解、减轻 (减轻环境毒性、生物膜危害或宿主肠道炎症反应)。",
+            "examples": [
+                  {
+                        "en": "Phage cocktail administration effectively mitigated intestinal mucosal inflammation in infected chickens.",
+                        "cn": "投喂噬菌体鸡尾酒制剂有效缓解了感染雏鸡的肠黏膜炎症反应。",
+                        "source": "Project 3: Chicken Data Analysis"
+                  }
+            ]
+      },
+      {
+            "id": "conn_01",
+            "word": "concomitant with",
+            "fullName": "concomitant with (co-occurring with)",
+            "phonetic": "/kənˈkɑː.mə.tənt wɪð/",
+            "pos": "介词短语 prep.",
+            "category": "🔗 逻辑推演与转折连接词",
+            "definition": "伴随着、与...同时发生 (表达两个生物学事件高度同步关联)。",
+            "examples": [
+                  {
+                        "en": "Plaque formation occurred concomitant with rapid depletion of intracellular ATP pools.",
+                        "cn": "噬菌斑的形成伴随着细胞内 ATP 能量池的迅速耗竭。",
+                        "source": "J. Bacteriol"
+                  }
+            ]
+      },
+      {
+            "id": "conn_02",
+            "word": "ostensibly",
+            "fullName": "ostensibly (apparently, seemingly)",
+            "phonetic": "/ɑːˈstɛn.sə.bli/",
+            "pos": "副词 adv.",
+            "category": "🔗 逻辑推演与转折连接词",
+            "definition": "表面上看起来、据称 (暗示实际机制可能更为复杂或有待推敲)。",
+            "examples": [
+                  {
+                        "en": "The prophage region was ostensibly dormant until activated by UV irradiation stress.",
+                        "cn": "此前噬菌体区域表面上处于休眠状态，直到被紫外照射应激所激活。",
+                        "source": "Nature Reviews"
+                  }
+            ]
+      },
+      {
+            "id": "conn_03",
+            "word": "contingent upon",
+            "fullName": "contingent upon / contingent on",
+            "phonetic": "/kənˈtɪn.dʒənt əˈpɒn/",
+            "pos": "短语 adj.",
+            "category": "🔗 逻辑推演与转折连接词",
+            "definition": "取决于、以...为前提 (表达强烈的必要因果条件)。",
+            "examples": [
+                  {
+                        "en": "Successful tailocin puncture is strictly contingent upon tail fiber recognition of the O-antigen.",
+                        "cn": "尾素的成功穿刺严格取决于其尾丝对靶标 O-抗原的精准识别。",
+                        "source": "Science 2024"
+                  }
+            ]
+      },
+      {
+            "id": "conn_04",
+            "word": "hitherto",
+            "fullName": "hitherto (until now / previously)",
+            "phonetic": "/ˌhɪð.ərˈtuː/",
+            "pos": "副词 adv.",
+            "category": "🔗 逻辑推演与转折连接词",
+            "definition": "迄今为止 (强调此前领域内的认知空白，突出当前发现的首创性)。",
+            "examples": [
+                  {
+                        "en": "We uncovered a hitherto unrecognized anti-defense mechanism mediated by viral NAD reconstitution.",
+                        "cn": "我们揭示了一种迄今未被认知的、由病毒 NAD 重建通路介导的新型反防御机制。",
+                        "source": "RecWaterVirome 论文摘要"
+                  }
+            ]
       }
-    ];
+];
 
     // App State
     let wordsData = [...INITIAL_WORDS];
